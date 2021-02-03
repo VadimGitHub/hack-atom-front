@@ -4,6 +4,8 @@ import Axios from 'axios'
 import Vuex from 'vuex'
 import router from './router'
 
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 import './index.css'
 
 Vue.use(Vuex)
