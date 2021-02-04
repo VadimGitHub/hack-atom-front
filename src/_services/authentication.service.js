@@ -13,12 +13,12 @@ export const authenticationService = {
     }
 };
 
-function login(username, password) {
-    return axios.post(`/users/authenticate`, {
-        username,
-        password
+function login(login, password) {
+    return axios.post(`/auth/login`, {
+        userLogin: login,
+        userPassword: password
     }).then(handleResponse => {
-        let user = handleResponse.data.user;
+        let user = handleResponse.data;
         localStorage.setItem('currentUser', JSON.stringify(user));
         currentUserSubject.next(user);
 

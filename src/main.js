@@ -15,7 +15,7 @@ Axios.defaults.baseURL = 'http://10.0.0.108:8080/';
 
 const token = localStorage.getItem('token')
 if (token) {
-    Axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+    Axios.defaults.headers.common['X-Auth'] = token
 }
 
 Vue.use(Vuex)
