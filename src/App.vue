@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <notifications group="foo" />
     <Nav class="mb-6 "/>
     <router-view/>
   </div>

@@ -1,23 +1,27 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Axios from 'axios'
 import Vuex from 'vuex'
+import Axios from 'axios'
+import VueAxios from 'vue-axios'
+import Notifications from 'vue-notification'
 import router from './router'
 
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import './index.css'
 
+Axios.defaults.baseURL = 'https://10.0.0.108:8080/';
+
+const token = localStorage.getItem('token')
+if (token) {
+    Axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+}
+
 Vue.use(Vuex)
+Vue.use(Notifications)
+Vue.use(VueAxios, Axios)
 
 Vue.config.productionTip = false
-
-Vue.prototype.$http = Axios
-const token = localStorage.getItem('token')
-
-if (token) {
-    Vue.prototype.$http.defaults.headers.common['Authorization'] = token
-}
 
 new Vue({
     router,
