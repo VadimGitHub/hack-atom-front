@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import Login from '@/views/Login'
 import Signup from '@/views/Signup'
+import Forms from  '@/components/Forms'
+import Step1 from  '@/views/Step1'
 import {Role} from '@/_helpers/role';
 
 import {authenticationService} from '@/_services/authentication.service';
@@ -33,6 +35,16 @@ export const router = new Router({
             name: 'admin',
             component: Signup,
             meta: {authorize: [Role.Admin]}
+        },
+        {
+            path: '/forms',
+            name: 'forms',
+            component: Forms
+        },
+        {
+            path: '/step1',
+            name: 'step1',
+            component: Step1
         },
         {
             path: '*',

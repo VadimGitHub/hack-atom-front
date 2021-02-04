@@ -5,7 +5,6 @@ import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import Notifications from 'vue-notification'
 import {router} from './router'
-// import {Role} from './role'
 
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
