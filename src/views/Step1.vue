@@ -1,111 +1,114 @@
 <template>
-  <div>
-    <div>
-      <div class="md:grid md:grid-cols-6 md:gap-6">
-        <div class="md:col-span-1">
-        </div>
-        <div class="md:col-span-2">
-          <div class="px-4 sm:px-0 ml-10">
-            <h3 class="text-lg font-medium leading-6 text-gray-900">Шаг 1</h3>
-            <p class="mt-1 text-sm text-gray-600">
-              На этом шаге делается такая вот хуита!"!
-            </p>
-          </div>
-        </div>
+  <div class="py-12 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="px-6 py-8">
+        <div class="flex justify-between container mx-auto">
+          <div class="md:grid md:grid-cols-3 md:gap-6">
+            <div class="md:col-span-1">
+              <h3 class="text-lg font-medium leading-6 text-gray-900">Шаг 1</h3>
+              <p class="mt-1 text-sm text-gray-600">
+                На этом шаге делается такая вот хуита!"!
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <div class="px-4 sm:px-0 ml-10">
+                <form @submit="validForm" class="md:col-span-2">
 
-        <form @submit="validForm" class="md:col-span-2">
+                  <div class="shadow overflow-hidden sm:rounded-md">
+                    <div class="px-4 py-5 bg-white sm:p-6">
+                      <div class="grid grid-cols-6 gap-6">
 
-          <div class="shadow overflow-hidden sm:rounded-md">
-            <div class="px-4 py-5 bg-white sm:p-6">
-              <div class="grid grid-cols-6 gap-6">
-
-                <div class="col-span-12 sm:col-span-6">
-                  <label for="projectName" class="block text-sm font-medium text-gray-700"><span
-                      class="text-red-600">*</span>Краткое название
-                    бизнес-инициативы/проекта: </label>
-                  <input type="text" name="projectName" id="projectName" autocomplete="projectName"
-                         v-model="temp.projectName"
-                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-5 border-gray-100 rounded-md h-8 p-2">
-                </div>
-
-
-                <div class="col-span-12 sm:col-span-6">
-                  <label for="projectTarget" class="block text-sm font-medium text-gray-700"><span
-                      class="text-red-600">*</span>Кратко описать идею
-                    проекта:</label>
-                  <textarea name="projectTarget" id="projectTarget" autocomplete="projectTarget"
-                            v-model="temp.projectTarget"
-                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
-                            cols="30" rows="6"></textarea>
-                </div>
-
-                <div class="col-span-12 sm:col-span-6">
-                  <label for="solvedProblem" class="block text-sm font-medium text-gray-700">Опишите, какие
-                    проблемы
-                    решает ваш проект : </label>
-                  <textarea name="solvedProblem" id="solvedProblem" autocomplete="solvedProblem"
-                            v-model="temp.solvedProblem"
-                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
-                            cols="30" rows="6"></textarea>
-                </div>
-
-                <div class="col-span-6">
-                  <label for="advantages" class="block text-sm font-medium text-gray-700">Кратко опишите, какими
-                    преимуществами обладает ваш проект:</label>
-                  <textarea name="advantages" id="advantages" autocomplete="advantages"
-                            v-model="temp.advantages"
-                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
-                            cols="30" rows="6"></textarea>
-                </div>
-
-                <div class="col-span-6">
-                  <label for="scopeId" class="block text-sm font-medium text-gray-700"><span
-                      class="text-red-600">*</span>Укажите на какую отрасль экономики направлен ваш проект:</label>
-                  <select id="scopeId" name="scopeId" autocomplete="scopeId"
-                          v-model="temp.scopeId"
-                          class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                    <option v-for="(item,i) in scope" :key="i" :value="item.id">{{ item.value }}</option>
-                  </select>
-                </div>
+                        <div class="col-span-12 sm:col-span-6">
+                          <label for="projectName" class="block text-sm font-medium text-gray-700"><span
+                              class="text-red-600">*</span>Краткое название
+                            бизнес-инициативы/проекта: </label>
+                          <input type="text" name="projectName" id="projectName" autocomplete="projectName"
+                                 v-model="temp.projectName"
+                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-5 border-gray-100 rounded-md h-8 p-2">
+                        </div>
 
 
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="stageId" class="block text-sm font-medium text-gray-700"><span
-                      class="text-red-600">*</span>Укажите на какой
-                    стадии
-                    находится ваш проект</label>
-                  <p>{{ this.temp.stageId }}</p>
-                  <select id="stageId" name="stageId" autocomplete="stageId"
-                          v-model="temp.stageId"
-                          class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                    <option v-for="(item,i) in stage" :key="i" :value="item.id">{{ item.value }}</option>
-                  </select>
-                </div>
+                        <div class="col-span-12 sm:col-span-6">
+                          <label for="projectTarget" class="block text-sm font-medium text-gray-700"><span
+                              class="text-red-600">*</span>Кратко описать идею
+                            проекта:</label>
+                          <textarea name="projectTarget" id="projectTarget" autocomplete="projectTarget"
+                                    v-model="temp.projectTarget"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
+                                    cols="30" rows="6"></textarea>
+                        </div>
 
-                <div class="col-span-6">
-                  <label for="readyTime" class="block text-sm font-medium text-gray-700">Укажите необходимый
-                    срок для окончательной реализации вашего проекта (в месяцах):</label>
-                  <input type="number" name="readyTime" id="readyTime" autocomplete="readyTime"
-                         v-model="temp.readyTime"
-                         placeholder="В месяцах"
-                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-8 p-2">
-                </div>
+                        <div class="col-span-12 sm:col-span-6">
+                          <label for="solvedProblem" class="block text-sm font-medium text-gray-700">Опишите, какие
+                            проблемы
+                            решает ваш проект : </label>
+                          <textarea name="solvedProblem" id="solvedProblem" autocomplete="solvedProblem"
+                                    v-model="temp.solvedProblem"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
+                                    cols="30" rows="6"></textarea>
+                        </div>
 
-                <div class="col-span-6" v-if="errorMess">
-                  <h1 class="text-3xl text-red-600">{{ errorMess }}</h1>
-                </div>
+                        <div class="col-span-6">
+                          <label for="advantages" class="block text-sm font-medium text-gray-700">Кратко опишите, какими
+                            преимуществами обладает ваш проект:</label>
+                          <textarea name="advantages" id="advantages" autocomplete="advantages"
+                                    v-model="temp.advantages"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
+                                    cols="30" rows="6"></textarea>
+                        </div>
+
+                        <div class="col-span-6">
+                          <label for="scopeId" class="block text-sm font-medium text-gray-700"><span
+                              class="text-red-600">*</span>Укажите на какую отрасль экономики направлен ваш проект:</label>
+                          <select id="scopeId" name="scopeId" autocomplete="scopeId"
+                                  v-model="temp.scopeId"
+                                  class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
+                            <option v-for="(item,i) in scope" :key="i" :value="item.id">{{ item.value }}</option>
+                          </select>
+                        </div>
+
+
+                        <div class="col-span-6 sm:col-span-3">
+                          <label for="stageId" class="block text-sm font-medium text-gray-700"><span
+                              class="text-red-600">*</span>Укажите на какой
+                            стадии
+                            находится ваш проект</label>
+                          <p>{{ this.temp.stageId }}</p>
+                          <select id="stageId" name="stageId" autocomplete="stageId"
+                                  v-model="temp.stageId"
+                                  class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
+                            <option v-for="(item,i) in stage" :key="i" :value="item.id">{{ item.value }}</option>
+                          </select>
+                        </div>
+
+                        <div class="col-span-6">
+                          <label for="readyTime" class="block text-sm font-medium text-gray-700">Укажите необходимый
+                            срок для окончательной реализации вашего проекта (в месяцах):</label>
+                          <input type="number" name="readyTime" id="readyTime" autocomplete="readyTime"
+                                 v-model="temp.readyTime"
+                                 placeholder="В месяцах"
+                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-8 p-2">
+                        </div>
+
+                        <div class="col-span-6" v-if="errorMess">
+                          <h1 class="text-3xl text-red-600">{{ errorMess }}</h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                      <button
+                          class="inline-flex justify-center py-2 px-10 mr-10 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Сохранить
+                      </button>
+
+                    </div>
+                  </div>
+
+                </form>
               </div>
             </div>
-            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-              <button
-                  class="inline-flex justify-center py-2 px-10 mr-10 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Сохранить
-              </button>
-
-            </div>
           </div>
-
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -173,22 +176,20 @@ export default {
     }
   },
   mounted() {
-    try{
+    try {
       this.scope = axios.get('http://10.0.0.108:8080/scope/find_all')
           .then(res => {
             console.log(res)
           })
-    }
-    catch(e){
+    } catch (e) {
       console.error(e)
     }
-    try{
-      this.stage= axios.get('http://10.0.0.108:8080/stage_realization/find_all')
+    try {
+      this.stage = axios.get('http://10.0.0.108:8080/stage_realization/find_all')
           .then(res => {
             console.log(res)
           })
-    }
-    catch (e){
+    } catch (e) {
       console.error(e)
     }
   }
