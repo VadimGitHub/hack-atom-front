@@ -38,6 +38,7 @@
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Регистрация
               </router-link>
+              <a href="#" v-if="currentUser" @click.prevent="logout" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Выйти</a>
             </div>
           </div>
         </div>
@@ -132,7 +133,6 @@ export default {
   methods: {
     logout() {
       authenticationService.logout()
-      this.$router.push('home');
     }
   }
 }

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import Login from '@/views/Login'
 import Signup from '@/views/Signup'
-import { Role } from '@/_helpers/role';
+import {Role} from '@/_helpers/role';
 
 import {authenticationService} from '@/_services/authentication.service';
 
@@ -32,7 +32,7 @@ export const router = new Router({
             path: '/admin',
             name: 'admin',
             component: Signup,
-            meta: { authorize: [Role.Admin] }
+            meta: {authorize: [Role.Admin]}
         },
         {
             path: '*',
@@ -46,21 +46,13 @@ router.beforeEach((to, from, next) => {
     const currentUser = authenticationService.currentUserValue;
 
     if (currentUser && !authorize) {
-        return next({
-            path: '/',
-            query: {
-                returnUrl: to.path
-            }
-        });
+        return next({path: '/'});
     }
 
     if (authorize) {
         if (!currentUser) {
             return next({
                 path: '/login',
-                query: {
-                    returnUrl: to.path
-                }
             });
         }
 
