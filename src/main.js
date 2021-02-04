@@ -8,6 +8,9 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import './index.css'
 
+import 'babel-polyfill'
+import vuetify from '/plugins/vuetify'
+
 Vue.use(Vuex)
 
 Vue.config.productionTip = false
@@ -20,6 +23,7 @@ if (token) {
 }
 
 new Vue({
+    vuetify,
     router,
     render: h => h(App)
 }).$mount('#app')
