@@ -17,65 +17,65 @@
                     <div class="px-4 py-5 bg-white sm:p-6">
                       <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-12 sm:col-span-6">
-                          <label for="name" class="block text-sm font-medium text-gray-700">Укажите название вашего
-                            продукта:</label>
-                          <input type="text" name="name" id="name" autocomplete="name"
-                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-8 p-2">
+                          <label class="block text-sm font-medium text-gray-700">Сфере деятельности: Scope</label>
                         </div>
 
                         <div class="col-span-12 sm:col-span-6">
-                          <label for="functional" class="block text-sm font-medium text-gray-700">Укажите основной
-                            функционал вашего продукта:</label>
-                          <textarea name="functional" id="functional" autocomplete="functional"
-                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
-                                    cols="30" rows="7"></textarea>
-                        </div>
-
-                        <div class="col-span-12 sm:col-span-6">
-                          <label for="characteristics" class="block text-sm font-medium text-gray-700">Укажите основные
-                            характеристики продукта: </label>
-
-                          <textarea name="characteristics" id="characteristics" autocomplete="characteristics"
-                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
-                                    cols="30" rows="7"></textarea>
-                        </div>
-
-                        <div class="col-span-12 sm:col-span-6">
-                          <label for="using_product" class="block text-sm font-medium text-gray-700">Укажите
-                            периодичность покупать ваш продукт/оформлять подписку и другое: </label>
-                          <select name="using_product" id="using_product" autocomplete="using_product"
-                                  v-model="temp.stageId" 
+                          <label for="region" class="block text-sm font-medium text-gray-700"><span
+                              class="text-red-600">*</span>Укажите область
+                            деятельности:</label>
+                          <select name="region" id="region" autocomplete="region" v-model="temp.stageId"
                                   class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
                             <option v-for="(item,i) in stage" :key="i" :value="item.id">{{ item.value }}</option>
                           </select>
                         </div>
 
                         <div class="col-span-12 sm:col-span-6">
+                          <label for="barrier_entry" class="block text-sm font-medium text-gray-700"><span
+                              class="text-red-600">*</span>Укажите входные
+                            барьеры: </label>
+
+                          <textarea name="barrier_entry" id="barrier_entry" autocomplete="barrier_entry"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
+                                    cols="30" rows="7"></textarea>
+                        </div>
+
+                        <div class="col-span-12 sm:col-span-6">
+                          <label for="output_analiz" class="block text-sm font-medium text-gray-700"><span
+                              class="text-red-600">*</span>Укажите краткий
+                            вывод по анализу рынка, возможности входа в него и размера рынка: </label>
+                          <textarea name="output_analiz" id="output_analiz" autocomplete="output_analiz"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
+                                    cols="30" rows="7"></textarea>
+                        </div>
+
+                        <div class="col-span-12 sm:col-span-6">
+                          <label for="name" class="block text-sm font-medium text-gray-700"><span
+                              class="text-red-600">*</span>Название
+                            конкурента: </label>
+                          <input type="text" name="name" id="name" autocomplete="name"
+                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-8 p-2">
+                        </div>
+
+
+                        <div class="col-span-12 sm:col-span-6">
                           <label for="advantages" class="block text-sm font-medium text-gray-700">Кратко опишите
-                            преимущества продукта по сравнению с аналогами: </label>
+                            преимущества конкурента</label>
                           <textarea name="advantages" id="advantages" autocomplete="advantages"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
                                     cols="30" rows="7"></textarea>
                         </div>
 
-
                         <div class="col-span-12 sm:col-span-6">
-                          <label for="additional_information" class="block text-sm font-medium text-gray-700">Опишите
-                            особенности продукта (наличие авторских прав, гостов, стандартов, сертификатов,
-                            экологичность продукта и др.)</label>
-                          <textarea name="additional_information" id="additional_information"
-                                    autocomplete="additional_information"
+                          <label for="problem_solved" class="block text-sm font-medium text-gray-700">Кратко опишите недостаки
+                            конкурента:</label>
+                          <textarea name="problem_solved" id="problem_solved" autocomplete="problem_solved"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-30 p-2"
                                     cols="30" rows="7"></textarea>
                         </div>
-
-                        <div class="col-span-12 sm:col-span-6">
-                          <label for="image" class="block text-sm font-medium text-gray-700">Загрузка фотографии
-                            изделия: </label>
-                          <input type="file" name="image" id="image" autocomplete="image"
-                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-8 p-2">
+                        <div class="col-span-6" v-if="errorMess">
+                          <h1 class="text-3xl text-red-600">{{ errorMess }}</h1>
                         </div>
-
                       </div>
                     </div>
                     <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -135,7 +135,7 @@ export default {
   },
   async created() {
     try {
-      this.stage =await axios.get('/stage_realization/find_all')
+      this.stage = await axios.get('/stage_realization/find_all')
           .then(res => {
             return res.data;
           })
@@ -143,7 +143,6 @@ export default {
       console.error(e)
     }
   }
-
 
 
 }

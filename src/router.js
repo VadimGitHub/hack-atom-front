@@ -7,6 +7,8 @@ import Forms from  '@/components/Forms'
 import Step1 from  '@/views/Step1'
 import Step2 from  '@/views/Step2'
 import Step2_2 from  '@/views/Step2_2'
+import Step3 from  '@/views/Step3'
+import Step3_2 from  '@/views/Step3_2'
 import {Role} from '@/_helpers/role';
 
 import {authenticationService} from '@/_services/authentication.service';
@@ -59,6 +61,18 @@ export const router = new Router({
             path: '/step2_2',
             name: 'step2_2',
             component: Step2_2,
+            meta: {authorize: []}
+        },
+        {
+            path: '/step3',
+            name: 'step3',
+            component: Step3,
+            meta: {authorize: []}
+        },
+        {
+            path: '/step3_2',
+            name: 'step3_2',
+            component: Step3_2,
             meta: {authorize: []}
         },
         {
