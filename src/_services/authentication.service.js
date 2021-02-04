@@ -22,11 +22,12 @@ function login(login, password) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         currentUserSubject.next(user);
 
-        return user;
+        window.location = '/'
     });
 }
 
 function logout() {
     localStorage.removeItem('currentUser');
     currentUserSubject.next(null);
+    window.location = '/'
 }

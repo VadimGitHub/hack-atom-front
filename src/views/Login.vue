@@ -76,7 +76,6 @@ export default {
       }
 
       authenticationService.login(this.login, this.password)
-      this.$router.push('home');
     },
   },
 }
