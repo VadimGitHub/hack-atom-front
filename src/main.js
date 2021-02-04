@@ -4,17 +4,18 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import Notifications from 'vue-notification'
-import router from './router'
+import {router} from './router'
+// import {Role} from './role'
 
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import './index.css'
 
-Axios.defaults.baseURL = 'https://10.0.0.108:8080/';
+Axios.defaults.baseURL = 'http://10.0.0.108:8080/';
 
 const token = localStorage.getItem('token')
 if (token) {
-    Axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+    Axios.defaults.headers.common['X-Auth'] = token
 }
 
 Vue.use(Vuex)
