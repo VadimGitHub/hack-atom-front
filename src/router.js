@@ -5,6 +5,7 @@ import Login from '@/views/Login'
 import Signup from '@/views/Signup'
 import Forms from  '@/components/Forms'
 import Step1 from  '@/views/Step1'
+import Admin from  '@/views/Admin'
 import {Role} from '@/_helpers/role';
 
 import {authenticationService} from '@/_services/authentication.service';
@@ -33,7 +34,7 @@ export const router = new Router({
         {
             path: '/admin',
             name: 'admin',
-            component: Signup,
+            component: Admin,
             meta: {authorize: [Role.Admin]}
         },
         {

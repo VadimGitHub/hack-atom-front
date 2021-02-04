@@ -30,6 +30,15 @@
               <router-link to="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
                 Главная
               </router-link>
+
+              <!-- Admins -->
+              <router-link v-if="currentUser && (currentUser.role === roles.Admin)"
+                           to="/admin"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Admin
+              </router-link>
+              <!-- End Admins -->
+
               <router-link v-if="!currentUser" to="/login"
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Авторизация
@@ -93,7 +102,8 @@
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your
                 Profile</a>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
-              <a href="#" v-if="currentUser" @click.prevent="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Выйти</a>
+              <a href="#" v-if="currentUser" @click.prevent="logout"
+                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Выйти</a>
             </div>
           </div>
         </div>
@@ -119,6 +129,8 @@
   </nav>
 </template>
 <script>
+
+import {Role} from '@/_helpers/role'
 import {authenticationService} from '@/_services/authentication.service';
 
 export default {
@@ -126,7 +138,8 @@ export default {
     return {
       profile: false,
       alerts: false,
-      currentUser: authenticationService.currentUserValue
+      currentUser: authenticationService.currentUserValue,
+      roles: Role
     }
   },
   methods: {
