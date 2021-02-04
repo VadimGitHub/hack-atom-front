@@ -105,11 +105,11 @@ export default {
         return;
       }
 
-      this.axios.post('/register', {
+      this.axios.post('/auth/register', {
         login: this.login,
         email: this.email,
         phone: this.phone,
-        company: this.company,
+        companyId: this.company,
         password: this.password
       }).then((response) => {
         console.log(response.data)
