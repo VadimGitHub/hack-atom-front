@@ -10,8 +10,6 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import './index.css'
 
-import 'babel-polyfill'
-import vuetify from '/plugins/vuetify'
 
 Vue.use(Vuex)
 Axios.defaults.baseURL = 'https://10.0.0.108:8080/';
@@ -28,7 +26,7 @@ Vue.use(VueAxios, Axios)
 Vue.config.productionTip = false
 
 new Vue({
-    vuetify,
+
     router,
     render: h => h(App)
 }).$mount('#app')

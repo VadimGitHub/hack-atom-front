@@ -6,7 +6,7 @@
         <!-- Auth Card Container -->
         <div class="grid place-items-center mx-2 my-20 sm:my-auto">
           <!-- Auth Card -->
-          <div class="w-11/12 p-12 sm:w-8/12 md:w-8/12 lg:w-8/12 2xl:w-10/12
+          <div class="w-11/12 p-12 sm:w-8/12 md:w-8/12 lg:w-5/12 2xl:w-5/12
             px-6 py-10 sm:px-10 sm:py-6
             bg-white rounded-lg shadow-md lg:shadow-lg">
             <h1 class="text-4xl p-5">Step 1</h1>
@@ -15,6 +15,13 @@
                 <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
 
+
+                    <v-app style="height: 50px;">
+                      <v-autocomplete
+                          :items="items"
+                          solo
+                      ></v-autocomplete>
+                    </v-app>
                     <div class="col-span-12 sm:col-span-6">
                       <label for="name" class="block text-sm font-medium text-gray-700">Краткое название
                         бизнес-инициативы/проекта: </label>
@@ -481,5 +488,17 @@
   </div>
 </template>
 <script>
-export default {}
+export default {
+  data(){
+    return{
+      items: [
+        { text: 'Florida', value: 'FL' },
+        { text: 'Georgia', value: 'GA' },
+        { text: 'Nebraska', value: 'NE' },
+        { text: 'California', value: 'CA' },
+        { text: 'New York', value: 'NY' },
+      ],
+    }
+  }
+}
 </script>
