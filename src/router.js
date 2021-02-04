@@ -45,7 +45,8 @@ export const router = new Router({
         {
             path: '/step1',
             name: 'step1',
-            component: Step1
+            component: Step1,
+            meta: {authorize: []}
         },
         {
             path: '*',

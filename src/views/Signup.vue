@@ -41,15 +41,14 @@
                     focus:text-gray-500 focus:outline-none focus:border-gray-200"
                  required/>
 
-          <!-- Company Input -->
+          <!-- Company Select -->
           <label for="company" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Предприятие</label>
-          <input id="company" v-model="company" type="text" name="company" placeholder="предприятие"
-                 autocomplete="company"
-                 class="block w-full py-3 px-1 mb-4
-                    text-gray-800 appearance-none
-                    border-b-2 border-gray-100
-                    focus:text-gray-500 focus:outline-none focus:border-gray-200"
-                 required/>
+          <select id="company" name="company" autocomplete="company"
+                  required
+                  v-model="company"
+                  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option v-for="(item, i) in companyList" :key="i" :value="item.id">{{ item.value }}</option>
+          </select>
 
           <!-- Password Input -->
           <label for="password" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Пароль</label>
@@ -89,6 +88,7 @@ export default {
       phone: null,
       company: null,
       password: null,
+      companyList: [],
     };
   },
   methods: {
@@ -116,5 +116,10 @@ export default {
       });
     },
   },
+  mounted() {
+    this.axios.get('/company/find_all').then((response) => {
+      this.companyList = response.data
+    });
+  }
 }
 </script>
