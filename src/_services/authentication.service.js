@@ -18,8 +18,12 @@ function login(login, password) {
         userLogin: login,
         userPassword: password
     }).then(handleResponse => {
-        let user = handleResponse.data;
+        let user = handleResponse.data.userDto;
+        let token = handleResponse.data.token;
+
+        localStorage.setItem('token', token);
         localStorage.setItem('currentUser', JSON.stringify(user));
+
         currentUserSubject.next(user);
 
         window.location = '/'

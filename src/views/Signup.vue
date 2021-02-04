@@ -111,8 +111,8 @@ export default {
         phone: this.phone,
         companyId: this.company,
         password: this.password
-      }).then((response) => {
-        console.log(response.data)
+      }).then(() => {
+        window.location = '/'
       });
     },
   },
