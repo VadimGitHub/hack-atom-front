@@ -4,7 +4,7 @@ import Home from '@/views/Home'
 import Login from '@/views/Login'
 import Signup from '@/views/Signup'
 import Forms from  '@/components/Forms'
-
+import Step1 from  '@/views/Step1'
 Vue.use(Router)
 
 export default new Router({
@@ -26,5 +26,9 @@ export default new Router({
             path: '/forms',
             component: Forms
         },
+        {
+            path: '/step1',
+            component: Step1
+        }
     ]
 })
