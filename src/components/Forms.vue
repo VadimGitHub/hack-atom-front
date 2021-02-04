@@ -16,12 +16,7 @@
                   <div class="grid grid-cols-6 gap-6">
 
 
-                    <v-app style="height: 50px;">
-                      <v-autocomplete
-                          :items="items"
-                          solo
-                      ></v-autocomplete>
-                    </v-app>
+
                     <div class="col-span-12 sm:col-span-6">
                       <label for="name" class="block text-sm font-medium text-gray-700">Краткое название
                         бизнес-инициативы/проекта: </label>

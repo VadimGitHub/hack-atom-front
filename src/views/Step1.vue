@@ -73,7 +73,6 @@
                               class="text-red-600">*</span>Укажите на какой
                             стадии
                             находится ваш проект</label>
-                          <p>{{ this.temp.stageId }}</p>
                           <select id="stageId" name="stageId" autocomplete="stageId"
                                   v-model="temp.stageId"
                                   class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
@@ -132,32 +131,10 @@ export default {
         readyTime: "",
       },
       scope: [
-        {
-          "id": 1,
-          "value": "parshin"
-        },
-        {
-          "id": 2,
-          "value": "parshin"
-        },
-        {
-          "id": 3,
-          "value": "parshin"
-        },
+
       ],
       stage: [
-        {
-          "id": 1,
-          "value": "lupook"
-        },
-        {
-          "id": 2,
-          "value": "lupook"
-        },
-        {
-          "id": 3,
-          "value": "lupook"
-        },
+
       ],
 
     }
@@ -167,7 +144,6 @@ export default {
     validForm(e) {
       e.preventDefault();
       if (this.temp.projectName && this.temp.projectTarget && this.temp.scopeId && this.temp.stageId) {
-        console.log(JSON.stringify(this.temp))
         this.errorMess = ""
         axios.post('http://10.0.0.108:8080/project/create', this.temp);
       } else {
@@ -175,19 +151,19 @@ export default {
       }
     }
   },
-  mounted() {
+ async created() {
+   try {
+     this.scope = await axios.get('/scope/find_all')
+         .then(res => {
+           return res.data;
+         })
+   } catch (e) {
+     console.error(e)
+   }
     try {
-      this.scope = axios.get('http://10.0.0.108:8080/scope/find_all')
+      this.stage =await axios.get('/stage_realization/find_all')
           .then(res => {
-            console.log(res)
-          })
-    } catch (e) {
-      console.error(e)
-    }
-    try {
-      this.stage = axios.get('http://10.0.0.108:8080/stage_realization/find_all')
-          .then(res => {
-            console.log(res)
+            return res.data;
           })
     } catch (e) {
       console.error(e)
