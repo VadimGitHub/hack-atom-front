@@ -2,6 +2,7 @@
   <div class="py-6 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Ads/>
+      <ButtonIndigo :title="'Посмотреть все объявления'" :to="'/projects'"/>
       <div class="mt-16"></div>
 
       <div class="text-center">
@@ -13,6 +14,7 @@
         </p>
       </div>
       <Projects :limit="6" :offset="0" :enableScroll="false" />
+      <ButtonIndigo :title="'Посмотреть все проекты'" :to="'/projects'"/>
     </div>
   </div>
 </template>
@@ -20,11 +22,13 @@
 <script>
 import Ads from "@/components/home/Ads";
 import Projects from "@/components/home/Projects";
+import ButtonIndigo from "@/components/ButtonIndigo";
 
 export default {
   components: {
     Ads,
-    Projects
+    Projects,
+    ButtonIndigo
   },
 }
 </script>
