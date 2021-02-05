@@ -26,6 +26,7 @@
                                    id="cost_prise"
                                    autocomplete="cost_prise"
                                    placeholder="В рублях"
+                                   v-model="temp.costPrise"
                                    class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                           </div>
 
@@ -34,22 +35,23 @@
                                    :required="true"/>
                             <input type="number" name="time_production" id="time_production"
                                    autocomplete="time_production"
+                                   v-model="temp.timeProduction"
                                    class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                           </div>
 
                           <div class="">
                             <h2 class="text-md text-black-600">Закупка оборудования</h2>
                           </div>
-                          <div class=""
+                          <div class=" border-b-2 pb-4 border-gray-100 mt-4"
                                v-for="(item,i) in equipment" :key="i+'equipment'">
                             <div class="">
                               <Label :label="'Укажите какое оборудование необходимо'"/>
-                              <input type="text" v-model="item.purchase_equipment"
+                              <input type="text" v-model="item.name"
                                      class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                             </div>
                             <div class="">
                               <Label :label="'Укажите стоимость'"/>
-                              <input type="number" v-model="item.cost_equipment"
+                              <input type="number" v-model="item.cost"
                                      class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                             </div>
                           </div>
@@ -65,16 +67,16 @@
                             <div class="">
                               <h1 class="text-md text-black-600">Закупка имущества</h1>
                             </div>
-                            <div class=""
+                            <div class=" border-b-2 pb-4 border-gray-100 mt-4"
                                  v-for="(item,i) in property" :key="i+'property'">
                               <div class="col-span-12">
                                 <Label :label="'Укажите какое оборудование необходимо'"/>
-                                <input type="text" v-model="item.purchase_property"
+                                <input type="text" v-model="item.name"
                                        class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                               </div>
                               <div class="">
                                 <Label :label="'Укажите стоимость'"/>
-                                <input type="number" v-model="item.cost_property"
+                                <input type="number" v-model="item.cost"
                                        class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                               </div>
                             </div>
@@ -91,16 +93,16 @@
                             <div class="">
                               <h1 class="text-md text-black-600">Закупка имущества</h1>
                             </div>
-                            <div class=""
-                                 v-for="(item,i) in property" :key="i+'property'">
+                            <div class=" border-b-2 pb-4 border-gray-100 mt-4"
+                                 v-for="(item,i) in company" :key="i+'property'">
                               <div class="">
                                 <Label :label="'Укажите какое оборудование необходимо.'"/>
-                                <input type="text" v-model="item.purchase_property"
+                                <input type="text" v-model="item.name"
                                        class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                               </div>
                               <div class="">
                                 <Label :label="'Укажите стоимость'"/>
-                                <input type="number" v-model="item.cost_property"
+                                <input type="number" v-model="item.resources"
                                        class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                               </div>
                             </div>
@@ -145,9 +147,18 @@ export default {
   data() {
     return {
       errorMess: "",
-      equipment: [{purchase_equipment: "", cost_equipment: ""}],
-      property:[{purchase_property: "", cost_property: ""}],
-      company:[{provider:"",name:""}]
+      temp: {
+        projectId: this.$route.params.id,
+        costPrise:"",
+        timeProduction:"",
+        createPurchaseEquimentDto:[],
+        createPurchasePropertyDto:[],
+        creeatePurchaseProviderDto:[],
+
+      },
+      equipment: [{name: "", cost: ""}],
+      property:[{name: "", cost: ""}],
+      company:[{name:"",resources:""}]
 
     }
   },
@@ -163,10 +174,13 @@ export default {
     },
     validForm(e) {
       e.preventDefault();
-      if (this.temp.projectName && this.temp.projectTarget && this.temp.scopeId && this.temp.stageId) {
+      this.temp.createPurchaseEquimentDto=this.equipment
+      this.temp.createPurchasePropertyDto=this.property
+      this.temp.creeatePurchaseProviderDto=this.company
+      if (this.temp.costPrise && this.temp.timeProduction) {
         console.log(JSON.stringify(this.temp))
         this.errorMess = ""
-        axios.post('http://10.0.0.108:8080/project/create', this.temp);
+        axios.post('http://10.0.0.108:8080/productions/create', this.temp);
       } else {
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
       }

@@ -26,6 +26,8 @@
             <Plank/>
           </div>
         </div>
+        <Rating/>
+
       </div>
     </section>
   </div>
@@ -34,12 +36,13 @@
 <script>
 import Plank from "@/components/project/Plank";
 import Stages from "@/components/Stages";
-
+import Rating from '@/components/Rating';
 export default {
   props: ['project'],
   components: {
     Plank,
-    Stages
+    Stages,
+    Rating
   }
 }
 </script>
