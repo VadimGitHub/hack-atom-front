@@ -1,5 +1,10 @@
 <template>
   <div class="box">
+   <div class="rates">
+     <div class="name_rate">1</div>
+     <div class="name_rate">2</div>
+     <div class="name_rate">3</div>
+   </div>
     <div class="rate">
       <div class="rating"><span v-for="i in 5" :key="i" :style="6-i<=one?'color:red;':'color:#888'"
                                 @click="one=6-i">☆</span></div>
@@ -11,14 +16,14 @@
     </div>
     <h1 class="rate_text text-5xl">{{ rate }}</h1>
 
-      <div class="Chart">
+    <!--  <div class="Chart">
         <DoughnutExample
             class="ch"
             ref="skills_chart"
             :chart-data="chartData"
             :options="options">
         </DoughnutExample>
-      </div>
+      </div>-->
 
 
 
@@ -26,10 +31,9 @@
 </template>
 
 <script>
-import DoughnutExample from '@/components/DoughnutExample'
+//import DoughnutExample from '@/components/DoughnutExample'
 
 const options = {
-  responsive: true,
   maintainAspectRatio: false,
   animation: {
     animateRotate: false
@@ -38,7 +42,7 @@ const options = {
 
 export default {
   name: "Rating",
-  components: {DoughnutExample},
+ // components: {DoughnutExample},
   data() {
     return {
       options,
@@ -69,23 +73,29 @@ export default {
 
       return Number(this.one) + Number(this.two) + Number(this.three);
     }
+  },
+  mounted() {
+
+
   }
 }
 </script>
 
 <style scoped>
 .box{
-  margin-left:120px ;
   margin-top: 50px;
+display: flex;
+  justify-content: center;
+  align-items: center;
   width: 500px;
-  position: relative;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 }
 .rate{
-  position: absolute;
-  top:40px;
+
 }
 .rate_text{
-  position: absolute;
   width: 100px;
   text-align: center;
   left: 200px;
