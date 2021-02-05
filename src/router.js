@@ -5,6 +5,8 @@ import Login from '@/views/Login'
 import Signup from '@/views/Signup'
 import Forms from  '@/components/Forms'
 import Step1 from  '@/views/Step1'
+import Admin from  '@/views/Admin'
+import Profile from  '@/views/Profile'
 import Step2 from  '@/views/Step2'
 import Step2_2 from  '@/views/Step2_2'
 import Step3 from  '@/views/Step3'
@@ -35,9 +37,15 @@ export const router = new Router({
             component: Signup
         },
         {
+            path: '/profile',
+            name: 'profile',
+            component: Profile,
+            meta: {authorize: []}
+        },
+        {
             path: '/admin',
             name: 'admin',
-            component: Signup,
+            component: Admin,
             meta: {authorize: [Role.Admin]}
         },
         {

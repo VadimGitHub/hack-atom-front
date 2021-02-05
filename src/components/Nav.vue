@@ -30,6 +30,15 @@
               <router-link to="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
                 Главная
               </router-link>
+
+              <!-- Admins -->
+              <router-link v-if="currentUser && (currentUser.role === roles.Admin)"
+                           to="/admin"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Admin
+              </router-link>
+              <!-- End Admins -->
+
               <router-link v-if="!currentUser" to="/login"
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Авторизация
@@ -103,17 +112,20 @@
                 v-show="alerts">
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your
                 Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
             </div>
             <div
                 class="origin-top-right absolute right-100 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu"
                 v-show="profile">
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your
-                Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
-              <a href="#" v-if="currentUser" @click.prevent="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Выйти</a>
+
+              <router-link v-if="currentUser" to="/profile" role="menuitem"
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                 Профиль
+              </router-link>
+
+              <a href="#" v-if="currentUser" @click.prevent="logout"
+                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Выйти</a>
             </div>
           </div>
         </div>
@@ -139,6 +151,8 @@
   </nav>
 </template>
 <script>
+
+import {Role} from '@/_helpers/role'
 import {authenticationService} from '@/_services/authentication.service';
 
 export default {
@@ -146,7 +160,8 @@ export default {
     return {
       profile: false,
       alerts: false,
-      currentUser: authenticationService.currentUserValue
+      currentUser: authenticationService.currentUserValue,
+      roles: Role
     }
   },
   methods: {
