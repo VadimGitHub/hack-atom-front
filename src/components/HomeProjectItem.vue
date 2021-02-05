@@ -5,7 +5,7 @@
       <StagesMini :status="project.status"/>
     </div>
     <div class="mt-2">
-      <router-link :to="(/project/) + project.id" role="menuitem"
+      <router-link :to="(/project/) + project.id + '/' + project.status" role="menuitem"
                    class="text-xl text-gray-700 font-bold hover:underline">
         {{ project.projectName }}
       </router-link>

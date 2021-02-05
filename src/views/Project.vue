@@ -30,7 +30,12 @@ export default {
     Advantages
   },
   mounted() {
-    this.axios.get('/project/byId/' + this.$route.params.id).then(res => {
+    let url = '/project/byId2/' + this.$route.params.id
+    if (this.$route.params.stage === 1) {
+      url = '/project/byId1/' + this.$route.params.id
+    }
+
+    this.axios.get(url).then(res => {
       this.project = res.data
     }).catch(error => {
       console.log(error)

@@ -40,7 +40,7 @@ export const router = new Router({
             meta: {authorize: []}
         },
         {
-            path: '/project/:id',
+            path: '/project/:id/:stage',
             name: 'project',
             component: Project,
             meta: {authorize: []}
