@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col bg-gray-100 mt-28">
+  <div class="flex flex-col bg-gray-100 mt-12">
     <!-- Auth Card Container -->
     <div class="grid place-items-center mx-2 my-20 sm:my-auto">
       <!-- Auth Card -->

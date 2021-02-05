@@ -1,6 +1,6 @@
 <template>
   <!-- Root element for center items -->
-  <div class="flex flex-col bg-gray-100 mt-28">
+  <div class="flex flex-col bg-gray-100 mt-12">
     <!-- Auth Card Container -->
     <div class="grid place-items-center mx-2 my-20 sm:my-auto">
       <!-- Auth Card -->
@@ -59,6 +59,32 @@
                     border-b-2 border-gray-100
                     focus:text-gray-500 focus:outline-none focus:border-gray-200"
                  required/>
+
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input id="person" name="offers" type="checkbox"
+                     class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+            </div>
+            <div class="ml-3 text-sm">
+              <label for="person" class="text-gray-700">
+                Ознакомился с <a href="#" class="text-indigo-600 hover:text-indigo-500">согласием на обработку
+                персональных данных</a> и принимаю его условия
+              </label>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input id="nondisclosure" name="offers" type="checkbox"
+                     class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+            </div>
+            <div class="ml-3 text-sm">
+              <label for="nondisclosure" class="text-gray-700">
+                Я ознакомился с <a href="#" class="text-indigo-600 hover:text-indigo-500">согласием о не разглашении
+                содержания БД</a>, лицам не зарегистрированным в БД
+              </label>
+            </div>
+          </div>
 
           <button type="submit"
                   class="w-full py-3 mt-10 bg-gray-800 rounded-sm
