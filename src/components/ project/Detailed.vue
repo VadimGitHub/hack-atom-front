@@ -108,7 +108,7 @@
 
 <script>
 export default {
-  name: "Detailed"
+  props: ['project'],
 }
 </script>
 

@@ -2,9 +2,9 @@
   <div class="py-6 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <Header />
-      <Detailed />
-      <Advantages />
+      <Header :project="project" />
+      <Detailed :project="project" />
+      <Advantages :project="project" />
 
     </div>
   </div>
@@ -30,11 +30,11 @@ export default {
     Advantages
   },
   mounted() {
-    // this.axios.get('/product/byId/' + this.$route.params.id).then(res => {
-    //   this.project = res.data
-    // }).catch(error => {
-    //   console.log(error)
-    // });
+    this.axios.get('/project/byId/' + this.$route.params.id).then(res => {
+      this.project = res.data
+    }).catch(error => {
+      console.log(error)
+    });
   }
 }
 </script>
