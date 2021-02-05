@@ -4,7 +4,6 @@
 
       <Header :project="project" />
       <Detailed :project="project" />
-      <Advantages :project="project" />
 
     </div>
   </div>
@@ -12,26 +11,24 @@
 
 <script>
 
-import Header from "@/components/ project/Header";
-// import Authors from "@/components/ project/Authors";
-import Detailed from "@/components/ project/Detailed";
-import Advantages from "@/components/ project/Advantages";
+import Header from "@/components/project/Header";
+// import Authors from "@/components/project/Authors";
+import Detailed from "@/components/project/Detailed";
 
 export default {
   data() {
     return {
-      project: null
+      project: {}
     }
   },
   components: {
     Header,
     // Authors,
     Detailed,
-    Advantages
   },
   mounted() {
     let url = '/project/byId2/' + this.$route.params.id
-    if (this.$route.params.stage === 1) {
+    if (Number(this.$route.params.stage) === 1) {
       url = '/project/byId1/' + this.$route.params.id
     }
 
