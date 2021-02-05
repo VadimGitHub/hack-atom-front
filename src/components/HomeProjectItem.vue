@@ -13,8 +13,11 @@
         {{ project.projectTarget | filterTarget }}
       </p>
     </div>
-    <div class="flex justify-between items-center mt-4">
-      <a href="#" class="text-blue-500 hover:underline">Посмотреть подробнее</a>
+    <div class="flex justify-between flex-wrap items-center mt-4">
+      <router-link :to="(/project/) + project.id + '/' + project.status" role="menuitem"
+                   class="text-blue-500 hover:underline">
+        посмотреть подробнее...
+      </router-link>
       <div>
         <a href="#" class="flex items-center">
           <h4 class="text-gray-700 font-bold hover:underline">{{ project.userName }} <span class="text-sm text-opacity-50">({{project.userEmail}})</span></h4>
