@@ -3,10 +3,11 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import Login from '@/views/Login'
 import Signup from '@/views/Signup'
-import Forms from  '@/components/Forms'
-import Step1 from  '@/views/Step1'
-import Admin from  '@/views/Admin'
-import Profile from  '@/views/Profile'
+import Forms from '@/components/Forms'
+import Step1 from '@/views/Step1'
+import Admin from '@/views/Admin'
+import Profile from '@/views/Profile'
+import Project from '@/views/Project'
 import {Role} from '@/_helpers/role';
 
 import {authenticationService} from '@/_services/authentication.service';
@@ -36,6 +37,12 @@ export const router = new Router({
             path: '/profile',
             name: 'profile',
             component: Profile,
+            meta: {authorize: []}
+        },
+        {
+            path: '/project/:id',
+            name: 'project',
+            component: Project,
             meta: {authorize: []}
         },
         {
