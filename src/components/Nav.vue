@@ -40,36 +40,15 @@
 
               <NavRouterLink v-if="!currentUser" :title="'Авторизация'" :to="'/login'" :active="this.$route.name === 'login'"/>
               <NavRouterLink v-if="!currentUser" :title="'Регистрация'" :to="'/signup'" :active="this.$route.name === 'signup'"/>
-              <NavRouterLink v-if="currentUser" :title="'Шаг 1'" :to="'/step1'" :active="this.$route.name === 'step1'"/>
-              <NavRouterLink v-if="currentUser" :title="'Шаг 2'" :to="'/step2/1'" :active="this.$route.name === 'step2'"/>
-              <NavRouterLink v-if="currentUser" :title="'Шаг 3'" :to="'/step3/1'" :active="this.$route.name === 'step3'"/>
-              <NavRouterLink v-if="currentUser" :title="'Шаг 4'" :to="'/step4'" :active="this.$route.name === 'step4'"/>
             </div>
           </div>
         </div>
         <div v-if="currentUser" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <div class="ml-3 relative">
-            <div>
-              <button
-                  class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                  id="user-menu" aria-haspopup="true"
-                  @click="profile=!profile">
-                <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full"
-                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                     alt="">
-              </button>
-            </div>
-            <!--
-              Profile dropdown panel, show/hide based on dropdown state.
+            <NavRouterLink v-if="currentUser" :title="'Профиль'" :to="'/profile'" :active="this.$route.name === 'profile'"/>
+            <a href="#" v-if="currentUser" @click.prevent="logout"
+               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" role="menuitem">Выйти</a>
 
-              Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            -->
             <div
                 class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu"
@@ -77,19 +56,6 @@
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your
                 Profile</a>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
-            </div>
-            <div
-                class="origin-top-right absolute right-100 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
-                role="menu" aria-orientation="vertical" aria-labelledby="user-menu"
-                v-show="profile">
-
-              <router-link v-if="currentUser" to="/profile" role="menuitem"
-                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                 Профиль
-              </router-link>
-
-              <a href="#" v-if="currentUser" @click.prevent="logout"
-                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Выйти</a>
             </div>
           </div>
         </div>

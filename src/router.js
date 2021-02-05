@@ -15,6 +15,8 @@ import Projects from '@/views/Projects'
 import Ads from '@/views/Ads'
 import {Role} from '@/_helpers/role';
 
+import axios from 'axios'
+
 import {authenticationService} from '@/_services/authentication.service';
 
 Vue.use(Router)
@@ -107,6 +109,28 @@ export const router = new Router({
 router.beforeEach((to, from, next) => {
     const {authorize} = to.meta;
     const currentUser = authenticationService.currentUserValue;
+
+    if (to.name === 'step3') {
+        axios.get('/project/byId1/' + to.params.id).then(res => {
+            let project = res.data
+            if (project.status < 2) {
+                window.location = '/'
+            }
+        }).catch(error => {
+            console.log(error)
+        });
+    }
+
+    if (to.name === 'step4') {
+        axios.get('/project/byId1/' + to.params.id).then(res => {
+            let project = res.data
+            if (project.status < 3) {
+                window.location = '/'
+            }
+        }).catch(error => {
+            console.log(error)
+        });
+    }
 
     if (currentUser && !authorize) {
         return next({path: '/'});
