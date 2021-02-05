@@ -59,6 +59,10 @@
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Шаг 3
               </router-link>
+              <router-link v-if="currentUser" to="/step4"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Шаг 4
+              </router-link>
             </div>
           </div>
         </div>

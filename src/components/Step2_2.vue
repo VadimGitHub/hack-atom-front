@@ -60,7 +60,8 @@
                           </div>
 
                           <div class="mt-4">
-                            <div v-for="(item,i) in temp.competitors" :key="i+'property'">
+                            <div class=" border-b-2 pb-4 border-gray-100 mt-4"
+                                v-for="(item,i) in temp.competitors" :key="i+'property'">
                               <div class="mt-4">
                                 <Label :label="'Название конкурента:'" :id="'name'" :required="true"/>
                                 <input type="text"

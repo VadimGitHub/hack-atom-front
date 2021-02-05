@@ -40,7 +40,7 @@
                           <div class="">
                             <h2 class="text-md text-black-600">Закупка оборудования</h2>
                           </div>
-                          <div class=""
+                          <div class=" border-b-2 pb-4 border-gray-100 mt-4"
                                v-for="(item,i) in equipment" :key="i+'equipment'">
                             <div class="">
                               <Label :label="'Укажите какое оборудование необходимо'"/>
@@ -65,7 +65,7 @@
                             <div class="">
                               <h1 class="text-md text-black-600">Закупка имущества</h1>
                             </div>
-                            <div class=""
+                            <div class=" border-b-2 pb-4 border-gray-100 mt-4"
                                  v-for="(item,i) in property" :key="i+'property'">
                               <div class="col-span-12">
                                 <Label :label="'Укажите какое оборудование необходимо'"/>
@@ -91,7 +91,7 @@
                             <div class="">
                               <h1 class="text-md text-black-600">Закупка имущества</h1>
                             </div>
-                            <div class=""
+                            <div class=" border-b-2 pb-4 border-gray-100 mt-4"
                                  v-for="(item,i) in property" :key="i+'property'">
                               <div class="">
                                 <Label :label="'Укажите какое оборудование необходимо.'"/>

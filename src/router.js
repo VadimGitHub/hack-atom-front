@@ -4,9 +4,10 @@ import Home from '@/views/Home'
 import Login from '@/views/Login'
 import Signup from '@/views/Signup'
 import Forms from '@/components/Forms'
-import Step1 from '@/views/Step1'
+import Step1 from '@/components/Step1'
 import Step_2 from '@/views/Step2'
 import Step3 from '@/views/Step3'
+import Step4 from '@/views/Step4'
 import Admin from '@/views/Admin'
 import Profile from '@/views/Profile'
 import Project from '@/views/Project'
@@ -74,6 +75,12 @@ export const router = new Router({
             path: '/step3',
             name: 'step3',
             component: Step3,
+            meta: {authorize: []}
+        },
+        {
+            path: '/step4',
+            name: 'step4',
+            component: Step4,
             meta: {authorize: []}
         },
         {

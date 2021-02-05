@@ -41,9 +41,9 @@
                             <Label :label="'Укажите какие виды продаж будут использоваться:'" :id="'sales_channel'"
                                    :required="false"/>
                             <select name="sales_channel" id="sales_channel" autocomplete="sales_channel"
-                                    v-model="temp.stageId"
+                                    v-model="temp.typeSales"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                              <option v-for="(item,i) in stage" :key="i" :value="item.id">{{ item.value }}</option>
+                              <option v-for="(item,i) in typeSales" :key="i" :value="item.id">{{ item.value }}</option>
                             </select>
                           </div>
 
@@ -51,9 +51,9 @@
                             <Label :label="'Способы рекламы:'" :id="'ways_advertising'"
                                    :required="true"/>
                             <select name="ways_advertising" id="ways_advertising" autocomplete="ways_advertising"
-                                    v-model="temp.stageId"
+                                    v-model="temp.waysAdvertising"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                              <option v-for="(item,i) in stage" :key="i" :value="item.id">{{ item.value }}</option>
+                              <option v-for="(item,i) in waysAdvertising" :key="i" :value="item.id">{{ item.value }}</option>
                             </select>
                           </div>
 
@@ -119,6 +119,8 @@ export default {
         stageId: "",
         readyTime: "",
       },
+      typeSales:[],
+      waysAdvertising:[],
       scope: [],
       stage: [],
 
@@ -139,13 +141,23 @@ export default {
   },
   async created() {
     try {
-      this.stage = await axios.get('/stage_realization/find_all')
+      this.typeSales = await axios.get('/types_sales/find_all')
           .then(res => {
             return res.data;
           })
     } catch (e) {
       console.error(e)
     }
+    try {
+      this.waysAdvertising= await axios.get('/ways_advertising/find_all')
+          .then(res => {
+            return res.data;
+          })
+    } catch (e) {
+      console.error(e)
+    }
+
+
   }
 
 
