@@ -10,8 +10,7 @@
             {{ project.projectTarget }}
           </p>
         </div>
-        {{project.statusId}}
-        <Stages :status="project.statusId" />
+        <Stages :status="project.status" />
 
         <div class="md:grid md:grid-cols-4 md:gap-6 mt-16">
           <div class="md:col-span-1">
@@ -33,7 +32,7 @@
 </template>
 
 <script>
-import Plank from "@/components/ project/Plank";
+import Plank from "@/components/project/Plank";
 import Stages from "@/components/Stages";
 
 export default {
