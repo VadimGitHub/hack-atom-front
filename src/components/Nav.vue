@@ -53,19 +53,11 @@
               </router-link>
               <router-link v-if="currentUser" to="/step2"
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Шаг 2.1
-              </router-link>
-              <router-link v-if="currentUser" to="/step2_2"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Шаг 2.2
+                Шаг 2
               </router-link>
               <router-link v-if="currentUser" to="/step3"
                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Шаг 3.1
-              </router-link>
-              <router-link v-if="currentUser" to="/step3_2"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Шаг 3.2
+                Шаг 3
               </router-link>
             </div>
           </div>
