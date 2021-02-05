@@ -7,6 +7,9 @@
       <div class="text-sm text-gray-500">
         {{ content }}
       </div>
+      <div class="rating">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+      </div>
     </div>
     <div class="p-2">
       <span class="block h-4 w-4 bg-blue-400 rounded-full bottom-0 right-0"></span>

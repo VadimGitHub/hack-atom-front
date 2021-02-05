@@ -454,7 +454,7 @@
 
                     <div class="col-span-12 sm:col-span-6">
                       <label for="ask" class="block text-sm font-medium text-gray-700">Проблемные вопросы:
-                        (необходимость управленчиских кадров, необходимость персонала и др.) </label>
+                        (необходимость управленческих кадров, необходимость персонала и др.) </label>
                       <input type="text" name="ask" id="ask" autocomplete="ask"
                              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-8 p-2">
                     </div>

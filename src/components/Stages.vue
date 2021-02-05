@@ -3,9 +3,9 @@
     <div class="flex">
       <div class="w-1/4">
         <div class="relative mb-2">
-          <div class="w-10 h-10 mx-auto bg-green-500 rounded-full text-lg text-white flex items-center">
+          <div class="w-10 h-10 mx-auto bg-yellow-600 rounded-full text-lg text-white flex items-center">
           <span class="text-center text-white w-full">
-            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="124"
                  height="24">
               <path class="heroicon-ui"
                     d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2zm14 8V5H5v6h14zm0 2H5v6h14v-6zM8 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
@@ -14,7 +14,8 @@
           </div>
         </div>
 
-        <div class="text-xs text-center md:text-base">Select Server</div>
+        <div class="text-xs text-center md:text-base">1 этап</div>
+        <div class="text-xs text-center md:text-base">Резюме</div>
       </div>
 
       <div class="w-1/4">
@@ -26,7 +27,7 @@
             </div>
           </div>
 
-          <div class="w-10 h-10 mx-auto bg-green-500 rounded-full text-lg text-white flex items-center">
+          <div class="w-10 h-10 mx-auto bg-red-500 rounded-full text-lg text-white flex items-center">
           <span class="text-center text-white w-full">
             <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                  height="24">
@@ -37,7 +38,8 @@
           </div>
         </div>
 
-        <div class="text-xs text-center md:text-base">Add User</div>
+        <div class="text-xs text-center md:text-base">2 этап</div>
+        <div class="text-xs text-center md:text-base">Описание продукта и анализ рынка</div>
       </div>
 
       <div class="w-1/4">
@@ -50,7 +52,7 @@
           </div>
 
           <div
-              class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
+              class="w-10 h-10 mx-auto bg-white border-2 border-blue-700 rounded-full text-lg text-white flex items-center">
           <span class="text-center text-gray-600 w-full">
             <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                  height="24">
@@ -61,7 +63,8 @@
           </div>
         </div>
 
-        <div class="text-xs text-center md:text-base">Setting</div>
+        <div class="text-xs text-center md:text-base">3 этап</div>
+        <div class="text-xs text-center md:text-base">Маркетинг, производство и управление</div>
       </div>
 
       <div class="w-1/4">
@@ -74,7 +77,7 @@
           </div>
 
           <div
-              class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
+              class="w-10 h-10 mx-auto bg-white border-2 border-red-700 rounded-full text-lg text-white flex items-center">
           <span class="text-center text-gray-600 w-full">
             <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                  height="24">
@@ -85,7 +88,8 @@
           </div>
         </div>
 
-        <div class="text-xs text-center md:text-base">Finished</div>
+        <div class="text-xs text-center md:text-base">4 этап</div>
+        <div class="text-xs text-center md:text-base">Финансы и риски</div>
       </div>
     </div>
   </div>
