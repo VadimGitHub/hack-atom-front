@@ -23,14 +23,16 @@
             <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                  alt="Workflow">
             <img class="hidden lg:block h-8 w-auto h-14"
-                 src="logo.png" alt="Workflow">
+                 src="/logo.png" alt="Workflow">
             <p class="text-white lg:tracking-widest text-2xl pl-3">АРХ<b>ИДЕЯ</b></p>
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
               <NavRouterLink :title="'Главная'" :to="'/'" :active="this.$route.name === 'home'"/>
               <NavRouterLink :title="'Проекты'" :to="'/projects'" :active="this.$route.name === 'projects'"/>
+              <NavRouterLink :title="'Мои проекты'" :to="'/my-projects'" :active="this.$route.name === 'my-projects'"/>
               <NavRouterLink :title="'Доска объявлений'" :to="'/ads'" :active="this.$route.name === 'ads'"/>
+              <NavRouterLink :title="'Мои объявления'" :to="'/my-ads'" :active="this.$route.name === 'my-ads'"/>
 
               <!-- Admins -->
               <NavRouterLink v-if="currentUser && (currentUser.role === roles.Admin)"

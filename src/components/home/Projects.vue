@@ -21,7 +21,7 @@ import Project from '@/components/HomeProjectItem'
 import Span1 from '@/components/Span1'
 
 export default {
-  props: ['limit', 'offset', 'enableScroll'],
+  props: ['limit', 'offset', 'enableScroll', 'url'],
   data() {
     return {
       projects: [],
@@ -38,7 +38,7 @@ export default {
       }
 
       this.limit = this.limit + 1;
-      this.axios.get('/project/cards', {
+      this.axios.get(this.url, {
         params: {
           limit: this.limit,
           offset: 0
@@ -51,7 +51,7 @@ export default {
     },
   },
   mounted() {
-    this.axios.get('/project/cards', {
+    this.axios.get(this.url, {
       params: {
         limit: this.limit,
         offset: this.offset

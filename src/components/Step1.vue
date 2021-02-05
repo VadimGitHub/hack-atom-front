@@ -117,6 +117,7 @@ export default {
     return {
       errorMess: "",
       temp: {
+        projectId: this.$route.params.id,
         projectName: "",
         projectTarget: "",
         solvedProblem: "",
@@ -134,14 +135,14 @@ export default {
       e.preventDefault();
       if (this.temp.projectName && this.temp.projectTarget && this.temp.scopeId && this.temp.stageId) {
         this.errorMess = ""
-        await this.axios.post('/project/create', this.temp).then(() => {
+        await this.axios.post('/project/create', this.temp).then((res) => {
           this.$notify({
             group: 'foo',
             type: 'success',
             title: 'Успешно',
             text: 'Проект сохранен'
           });
-          // TODO: редирект в карточку проекта
+          window.location = '/project/' + res.data + '/1'
         });
       } else {
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
@@ -149,6 +150,22 @@ export default {
     }
   },
   created() {
+    if (this.temp.projectId) {
+      this.axios.get('/project/byId/' + this.temp.projectId).then(res => {
+        let project = res.data
+
+        this.temp.projectName = project.projectName;
+        this.temp.projectTarget = project.projectTarget;
+        this.temp.solvedProblem = project.problemSolved;
+        this.temp.advantages = project.advantages;
+        this.temp.scopeId = project.scopeId;
+        this.temp.stageId = project.stageId;
+        this.temp.readyTime = project.readyTime;
+      }).catch(error => {
+        console.log(error)
+      });
+    }
+
     this.axios.get('/scope/find_all').then(res => {
       this.scope = res.data
     }).catch(error => {

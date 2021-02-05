@@ -4,8 +4,11 @@
       <div class="flex justify-between container mx-auto">
         <div class="w-full">
           <div class="flex items-center justify-between px-6">
-            <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Список проектов</h1>
+            <div class="flex">
+              <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Мои проекты</h1>
+            </div>
             <div class="flex align-center items-center align-middle">
+              <ButtonIndigo class="whitespace-nowrap" :title="'Создать проект'" :to="'/step1'"/>
               <select id="stage" name="stage" autocomplete="stage"
                       v-model="filterStage"
                       class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
@@ -18,12 +21,10 @@
                 <option v-for="(date, i) in filtersList" :key="i" :value="date">{{ date }}</option>
               </select>
 
-              <a href="/projects">сбросить</a>
+              <a href="/my-projects">сбросить</a>
             </div>
           </div>
-
-          <Projects :limit="5" :offset="0" :enableScroll="true" :url="'/project/cards'"/>
-
+          <Projects :limit="5" :offset="0" :enableScroll="true" :url="'/project/for_user'"/>
         </div>
       </div>
     </div>
@@ -32,6 +33,7 @@
 
 <script>
 import Projects from "@/components/home/Projects";
+import ButtonIndigo from "@/components/ButtonIndigo";
 
 export default {
   data() {
@@ -51,7 +53,8 @@ export default {
     }
   },
   components: {
-    Projects
+    Projects,
+    ButtonIndigo
   }
 }
 </script>

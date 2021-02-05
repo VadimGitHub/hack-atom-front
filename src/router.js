@@ -12,7 +12,9 @@ import Admin from '@/views/Admin'
 import Profile from '@/views/Profile'
 import Project from '@/views/Project'
 import Projects from '@/views/Projects'
+import MyProjects from '@/views/MyProjects'
 import Ads from '@/views/Ads'
+import MyAds from '@/views/MyAds'
 import {Role} from '@/_helpers/role';
 
 import axios from 'axios'
@@ -53,9 +55,21 @@ export const router = new Router({
             meta: {authorize: []}
         },
         {
+            path: '/my-projects',
+            name: 'my-projects',
+            component: MyProjects,
+            meta: {authorize: []}
+        },
+        {
             path: '/ads',
             name: 'ads',
             component: Ads,
+            meta: {authorize: []}
+        },
+        {
+            path: '/my-ads',
+            name: 'my-ads',
+            component: MyAds,
             meta: {authorize: []}
         },
         {
@@ -77,6 +91,12 @@ export const router = new Router({
         },
         {
             path: '/step1',
+            name: 'step1',
+            component: Step1,
+            meta: {authorize: []}
+        },
+        {
+            path: '/step1/:id',
             name: 'step1',
             component: Step1,
             meta: {authorize: []}

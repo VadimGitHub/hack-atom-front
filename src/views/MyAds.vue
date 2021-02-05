@@ -4,26 +4,20 @@
       <div class="flex justify-between container mx-auto">
         <div class="w-full">
           <div class="flex items-center justify-between px-6">
-            <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Список проектов</h1>
+            <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Мои объявления</h1>
             <div class="flex align-center items-center align-middle">
-              <select id="stage" name="stage" autocomplete="stage"
-                      v-model="filterStage"
-                      class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                <option v-for="(date, i) in stage" :key="i" :value="date">{{ date }}</option>
-              </select>
-
+              <ButtonIndigo class="whitespace-nowrap" :title="'Создать проект'" :to="'/step1'"/>
               <select id="date" name="date" autocomplete="date"
                       v-model="filterDate"
                       class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
                 <option v-for="(date, i) in filtersList" :key="i" :value="date">{{ date }}</option>
               </select>
 
-              <a href="/projects">сбросить</a>
+              <a href="/my-projects">сбросить</a>
             </div>
           </div>
 
-          <Projects :limit="5" :offset="0" :enableScroll="true" :url="'/project/cards'"/>
-
+          <Ads :limit="5" :offset="0" :enableScroll="true"/>
         </div>
       </div>
     </div>
@@ -31,19 +25,14 @@
 </template>
 
 <script>
-import Projects from "@/components/home/Projects";
+import Ads from "@/components/home/Ads";
+import ButtonIndigo from "@/components/ButtonIndigo";
 
 export default {
+  props: ['title'],
   data() {
     return {
-      filterStage: null,
       filterDate: null,
-      stage: {
-        1: 'Этап 1',
-        2: 'Этап 2',
-        3: 'Этап 3',
-        4: 'Этап 4',
-      },
       filtersList: {
         1: 'Последние',
         2: 'За текущую неделю',
@@ -51,7 +40,8 @@ export default {
     }
   },
   components: {
-    Projects
+    Ads,
+    ButtonIndigo
   }
 }
 </script>

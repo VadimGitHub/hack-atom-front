@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="text-gray-400 text-xs text-right">
-        <a href="mailto:chvss.era@gmail.com">chvss.era@gmail.com</a>
+        <a :href="('mailto:') + email">{{ email }}</a>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  props: ['title', 'content']
+  props: ['title', 'content', 'email']
 }
 </script>
 

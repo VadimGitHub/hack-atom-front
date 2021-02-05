@@ -6,7 +6,7 @@
           <div class="w-10 h-10 bg-purple-500 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center"></div>
         </div>
         <div class="text-xs text-center md:text-base">
-          <router-link to="/step1" class="text-indigo-600 hover:text-indigo-500">
+          <router-link :to="('/step1/') + id" class="text-indigo-600 hover:text-indigo-500">
             I. Резюме
           </router-link>
         </div>

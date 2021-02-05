@@ -5,7 +5,11 @@
         <div class="w-full">
           <div class="md:grid md:grid-cols-3 md:gap-6">
             <Span1 v-for="(ad, i) in ads" :key="i">
-              <CardAd class="mb-5 sm:mb-0" :title="'Ищу толкового дизайнера'" :content="'Ищем любого рукастого ногастого'" />
+              <CardAd
+                  class="mb-5 sm:mb-0"
+                  :email="'chvss.era@gmail.com'"
+                  :title="'Ищу толкового дизайнера'"
+                  :content="'Ищем любого рукастого ногастого'" />
             </Span1>
           </div>
         </div>
@@ -30,7 +34,7 @@ export default {
     CardAd
   },
   mounted() {
-    this.axios.get('/project/cards', {
+    this.axios.get('/ads/find_all', {
       params: {
         limit: this.limit,
         offset: 0
