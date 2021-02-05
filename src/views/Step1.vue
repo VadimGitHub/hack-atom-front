@@ -19,18 +19,17 @@
                       <div class="text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                         <div class="flex flex-col">
                           <div>
-                            <label for="projectName" class="block text-sm text-gray-700">
-                              Название бизнес-инициативы/проекта:&nbsp;<span class="text-red-600">*</span>
-                            </label>
-                            <input type="text" name="projectName" id="projectName" autocomplete="projectName"
+                            <Label :label="'Название бизнес-инициативы/проекта:'" :id="'projectName'" :required="true"/>
+                            <input type="text"
+                                   name="projectName"
+                                   id="projectName"
+                                   autocomplete="projectName"
                                    v-model="temp.projectName"
                                    class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                           </div>
 
                           <div class="mt-4">
-                            <label for="projectTarget" class="block text-sm text-gray-700">
-                              Идея проекта:&nbsp;<span class="text-red-600">*</span>
-                            </label>
+                            <Label :label="'Идея проекта:'" :id="'projectTarget'" :required="true"/>
                             <textarea name="projectTarget" id="projectTarget" autocomplete="projectTarget"
                                       v-model="temp.projectTarget"
                                       class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
@@ -38,8 +37,8 @@
                           </div>
 
                           <div class="mt-4">
-                            <label for="solvedProblem" class="block text-sm text-gray-700">
-                              Какие проблемы решает ваш проект: </label>
+                            <Label :label="'Какие проблемы решает ваш проект:'" :id="'solvedProblem'"
+                                   :required="false"/>
                             <textarea name="solvedProblem" id="solvedProblem" autocomplete="solvedProblem"
                                       v-model="temp.solvedProblem"
                                       class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
@@ -47,8 +46,8 @@
                           </div>
 
                           <div class="mt-4">
-                            <label for="advantages" class="block text-sm text-gray-700">
-                              Какими преимуществами обладает ваш проект:</label>
+                            <Label :label="'Какими преимуществами обладает ваш проект:'" :id="'advantages'"
+                                   :required="false"/>
                             <textarea name="advantages" id="advantages" autocomplete="advantages"
                                       v-model="temp.advantages"
                                       class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
@@ -56,9 +55,8 @@
                           </div>
 
                           <div class="mt-4">
-                            <label for="scopeId" class="block text-sm text-gray-700">
-                              Укажите на какую отрасль экономики направлен ваш проект:&nbsp;<span class="text-red-600">*</span>
-                            </label>
+                            <Label :label="'Укажите на какую отрасль экономики направлен ваш проект:'" :id="'scopeId'"
+                                   :required="true"/>
                             <select id="scopeId" name="scopeId" autocomplete="scopeId"
                                     v-model="temp.scopeId"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
@@ -67,8 +65,8 @@
                           </div>
 
                           <div class="mt-4">
-                            <label for="stageId" class="block text-sm text-gray-700">
-                              Укажите на какой стадии находится ваш проект:&nbsp;<span class="text-red-600">*</span></label>
+                            <Label :label="'Укажите на какой стадии находится ваш проект:'" :id="'stageId'"
+                                   :required="true"/>
                             <select id="stageId" name="stageId" autocomplete="stageId"
                                     v-model="temp.stageId"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
@@ -77,9 +75,8 @@
                           </div>
 
                           <div class="mt-4">
-                            <label for="readyTime" class="block text-sm text-gray-700">
-                              Необходимый срок для окончательной реализации вашего проекта (в месяцах):
-                            </label>
+                            <Label :label="'Необходимый срок для окончательной реализации вашего проекта (в месяцах):'"
+                                   :id="'readyTime'" :required="false"/>
                             <input type="number" name="readyTime" id="readyTime" autocomplete="readyTime"
                                    v-model="temp.readyTime"
                                    placeholder="В месяцах"
@@ -102,16 +99,20 @@
                 </form>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </template>
+
 <script>
+import Label from "@/components/Label";
+
 export default {
+  components: {
+    Label,
+  },
   data() {
     return {
       errorMess: "",
@@ -129,33 +130,36 @@ export default {
     }
   },
   methods: {
-    validForm(e) {
+    async validForm(e) {
       e.preventDefault();
       if (this.temp.projectName && this.temp.projectTarget && this.temp.scopeId && this.temp.stageId) {
         this.errorMess = ""
-        this.axios.post('/project/create', this.temp);
+        await this.axios.post('/project/create', this.temp).then(() => {
+          this.$notify({
+            group: 'foo',
+            type: 'success',
+            title: 'Успешно',
+            text: 'Проект сохранен'
+          });
+          // TODO: редирект в карточку проекта
+        });
       } else {
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
       }
     }
   },
-  async created() {
-    try {
-      this.scope = await this.axios.get('/scope/find_all')
-          .then(res => {
-            return res.data;
-          })
-    } catch (e) {
-      console.error(e)
-    }
-    try {
-      this.stage = await this.axios.get('/stage_realization/find_all')
-          .then(res => {
-            return res.data;
-          })
-    } catch (e) {
-      console.error(e)
-    }
+  created() {
+    this.axios.get('/scope/find_all').then(res => {
+      this.scope = res.data
+    }).catch(error => {
+      console.log(error)
+    });
+
+    this.axios.get('/stage_realization/find_all').then(res => {
+      this.stage = res.data;
+    }).catch(error => {
+      console.log(error)
+    });
   }
 }
 </script>
