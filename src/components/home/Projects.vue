@@ -37,8 +37,6 @@ export default {
         return;
       }
 
-      this.busy = true;
-
       this.limit = this.limit + 1;
       this.axios.get('/project/cards', {
         params: {

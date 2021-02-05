@@ -11,6 +11,7 @@ import Admin from '@/views/Admin'
 import Profile from '@/views/Profile'
 import Project from '@/views/Project'
 import Projects from '@/views/Projects'
+import Ads from '@/views/Ads'
 import {Role} from '@/_helpers/role';
 
 import {authenticationService} from '@/_services/authentication.service';
@@ -46,6 +47,12 @@ export const router = new Router({
             path: '/projects',
             name: 'projects',
             component: Projects,
+            meta: {authorize: []}
+        },
+        {
+            path: '/ads',
+            name: 'ads',
+            component: Ads,
             meta: {authorize: []}
         },
         {

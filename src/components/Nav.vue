@@ -35,6 +35,10 @@
                 Проекты
               </router-link>
 
+              <router-link to="/ads" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Доска объявлений
+              </router-link>
+
               <!-- Admins -->
               <router-link v-if="currentUser && (currentUser.role === roles.Admin)"
                            to="/admin"
