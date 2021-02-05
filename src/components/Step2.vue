@@ -118,7 +118,7 @@ export default {
     return {
       errorMess: "",
       temp: {
-        projectId: 3,
+        projectId: this.$route.params.id,
         productName: "",
         productFunctional: "",
         productCharacteristics: "",

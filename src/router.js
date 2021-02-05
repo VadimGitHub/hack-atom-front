@@ -66,13 +66,13 @@ export const router = new Router({
             meta: {authorize: []}
         },
         {
-            path: '/step2',
+            path: '/step2/:id',
             name: 'step2',
             component: Step_2,
             meta: {authorize: []}
         },
         {
-            path: '/step3',
+            path: '/step3/:id',
             name: 'step3',
             component: Step3,
             meta: {authorize: []}

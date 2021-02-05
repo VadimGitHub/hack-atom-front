@@ -25,6 +25,7 @@
                                    id="cost_product"
                                    autocomplete="cost_product"
                                    placeholder="В рублях"
+                                   v-model="temp.marketingProductCost"
                                    class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                           </div>
 
@@ -34,6 +35,7 @@
                                    :required="true"/>
                             <input type="text" name="volume_sales" id="volume_sales" autocomplete="volume_sales"
                                    placeholder="В рублях"
+                                   v-model="temp.volumeSales"
                                    class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                           </div>
 
@@ -42,7 +44,9 @@
                                    :required="false"/>
                             <select name="sales_channel" id="sales_channel" autocomplete="sales_channel"
                                     v-model="temp.typeSales"
-                                    class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
+                                    multiple
+                                    max="4"
+                                    class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-30">
                               <option v-for="(item,i) in typeSales" :key="i" :value="item.id">{{ item.value }}</option>
                             </select>
                           </div>
@@ -51,18 +55,20 @@
                             <Label :label="'Способы рекламы:'" :id="'ways_advertising'"
                                    :required="true"/>
                             <select name="ways_advertising" id="ways_advertising" autocomplete="ways_advertising"
-                                    v-model="temp.waysAdvertising"
+                                    v-model="temp.advertisingWays"
+                                    multiple
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                              <option v-for="(item,i) in waysAdvertising" :key="i" :value="item.id">{{ item.value }}</option>
+                              <option v-for="(item,i) in advertisingWays" :key="i" :value="item.id">{{ item.value }}</option>
                             </select>
                           </div>
 
 
                           <div class="mt-4">
-                            <Label :label="'Укажите среднее количество продаж продукта в месяц:'" :id="'market_costs'"
+                            <Label :label="'Укажите необходимые расходы на маркетинговую деятельность:'" :id="'market_costs'"
                                    :required="true"/>
                             <input type="text" name="market_costs" id="market_costs" autocomplete="market_costs"
                                    placeholder="В рублях"
+                                   v-model="temp.marketingCost"
                                    class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                           </div>
 
@@ -111,29 +117,25 @@ export default {
     return {
       errorMess: "",
       temp: {
-        projectName: "",
-        projectTarget: "",
-        solvedProblem: "",
-        advantages: "",
-        scopeId: "",
-        stageId: "",
-        readyTime: "",
+        productId: this.$route.params.id,
+        marketingProductCost: "",
+        volumeSales: "",
+        marketingCost: "",
+        typeSales: [],
+        advertisingWays: [],
       },
       typeSales:[],
-      waysAdvertising:[],
-      scope: [],
-      stage: [],
-
+      advertisingWays:[],
     }
   },
   methods: {
 
     validForm(e) {
       e.preventDefault();
-      if (this.temp.projectName && this.temp.projectTarget && this.temp.scopeId && this.temp.stageId) {
+      if (this.temp.marketingProductCost && this.temp.volumeSales && this.temp.advertisingWays ) {
         console.log(JSON.stringify(this.temp))
         this.errorMess = ""
-        axios.post('http://10.0.0.108:8080/project/create', this.temp);
+        axios.post('http://10.0.0.108:8080/marketing/create', this.temp);
       } else {
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
       }
@@ -149,7 +151,7 @@ export default {
       console.error(e)
     }
     try {
-      this.waysAdvertising= await axios.get('/ways_advertising/find_all')
+      this.advertisingWays= await axios.get('/ways_advertising/find_all')
           .then(res => {
             return res.data;
           })
