@@ -79,12 +79,7 @@
                                       cols="30" rows="4"></textarea>
                           </div>
 
-                          <div class="col-span-12 sm:col-span-6">
-                            <label for="image" class="block text-sm font-medium text-gray-700">Загрузка фотографии
-                              изделия: </label>
-                            <input type="file" name="image" id="image" autocomplete="image"
-                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 border-b-2 border-gray-100 rounded-md h-8 p-2">
-                          </div>
+                          <Dropzone />
 
                           <div class="col-span-6 mt-6" v-if="errorMess">
                             <h1 class="text-sm text-red-600">{{ errorMess }}</h1>
@@ -111,11 +106,13 @@
 </template>
 <script>
 import Label from "@/components/Label";
+import Dropzone from "@/components/Dropzone";
 
 export default {
   name: "step1",
   components: {
-    Label
+    Label,
+    Dropzone
   },
   data() {
     return {

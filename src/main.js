@@ -8,6 +8,10 @@ import {router} from './router'
 
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
+
+import 'dropzone/dist/dropzone.css'
+import 'dropzone/dist/dropzone'
+
 import './index.css'
 
 Axios.defaults.baseURL = 'http://10.0.0.108:8080/';
