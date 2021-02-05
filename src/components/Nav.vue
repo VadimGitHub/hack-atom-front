@@ -27,50 +27,23 @@
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
-              <router-link to="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
-                Главная
-              </router-link>
-
-              <router-link to="/projects" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Проекты
-              </router-link>
-
-              <router-link to="/ads" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Доска объявлений
-              </router-link>
+              <NavRouterLink :title="'Главная'" :to="'/'" :active="this.$route.name === 'home'"/>
+              <NavRouterLink :title="'Проекты'" :to="'/projects'" :active="this.$route.name === 'projects'"/>
+              <NavRouterLink :title="'Доска объявлений'" :to="'/ads'" :active="this.$route.name === 'ads'"/>
 
               <!-- Admins -->
-              <router-link v-if="currentUser && (currentUser.role === roles.Admin)"
-                           to="/admin"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Admin
-              </router-link>
+              <NavRouterLink v-if="currentUser && (currentUser.role === roles.Admin)"
+                             :title="'Admin'"
+                             :to="'/admin'"
+                             :active="this.$route.name === 'admin'"/>
               <!-- End Admins -->
 
-              <router-link v-if="!currentUser" to="/login"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Авторизация
-              </router-link>
-              <router-link v-if="!currentUser" to="/signup"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Регистрация
-              </router-link>
-              <router-link v-if="currentUser" to="/step1"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Шаг 1
-              </router-link>
-              <router-link v-if="currentUser" to="/step2/1"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Шаг 2
-              </router-link>
-              <router-link v-if="currentUser" to="/step3/1"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Шаг 3
-              </router-link>
-              <router-link v-if="currentUser" to="/step4"
-                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Шаг 4
-              </router-link>
+              <NavRouterLink v-if="!currentUser" :title="'Авторизация'" :to="'/login'" :active="this.$route.name === 'login'"/>
+              <NavRouterLink v-if="!currentUser" :title="'Регистрация'" :to="'/signup'" :active="this.$route.name === 'signup'"/>
+              <NavRouterLink v-if="currentUser" :title="'Шаг 1'" :to="'/step1'" :active="this.$route.name === 'step1'"/>
+              <NavRouterLink v-if="currentUser" :title="'Шаг 2'" :to="'/step2/1'" :active="this.$route.name === 'step2'"/>
+              <NavRouterLink v-if="currentUser" :title="'Шаг 3'" :to="'/step3/1'" :active="this.$route.name === 'step3'"/>
+              <NavRouterLink v-if="currentUser" :title="'Шаг 4'" :to="'/step4'" :active="this.$route.name === 'step4'"/>
             </div>
           </div>
         </div>
@@ -143,6 +116,7 @@
 </template>
 <script>
 
+import NavRouterLink from "@/components/NavRouterLink";
 import {Role} from '@/_helpers/role'
 import {authenticationService} from '@/_services/authentication.service';
 
@@ -155,10 +129,16 @@ export default {
       roles: Role
     }
   },
+  components: {
+    NavRouterLink
+  },
   methods: {
     logout() {
       authenticationService.logout()
     }
+  },
+  created() {
+    console.log(this.$route)
   }
 }
 </script>
