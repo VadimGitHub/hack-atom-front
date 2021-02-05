@@ -21,7 +21,7 @@ import Project from '@/components/HomeProjectItem'
 import Span1 from '@/components/Span1'
 
 export default {
-  props: ['limit', 'offset'],
+  props: ['limit', 'offset', 'enableScroll'],
   data() {
     return {
       projects: [],
@@ -33,6 +33,10 @@ export default {
   },
   methods: {
     loadMore() {
+      if (!this.enableScroll) {
+        return;
+      }
+
       this.busy = true;
 
       this.limit = this.limit + 1;

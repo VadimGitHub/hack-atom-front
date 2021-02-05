@@ -22,7 +22,7 @@
             </div>
           </div>
 
-          <Projects :limit="5" :offset="0"/>
+          <Projects :limit="5" :offset="0" :enableScroll="true"/>
 
         </div>
       </div>

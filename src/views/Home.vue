@@ -12,7 +12,7 @@
           Среди наших проектов каждый может найти соответствующий его интересам
         </p>
       </div>
-      <Projects :limit="6" :offset="0"/>
+      <Projects :limit="6" :offset="0" :enableScroll="false" />
     </div>
   </div>
 </template>
