@@ -6,11 +6,11 @@
     </div>
     <div class="mt-2">
       <router-link :to="(/project/) + project.id + '/' + project.status" role="menuitem"
-                   class="text-xl text-gray-700 font-bold hover:underline">
+                   class="text-xl text-gray-700 font-bold hover:underline block w-full truncate">
         {{ project.projectName }}
       </router-link>
-      <p class="text-sm mt-2 text-gray-600">
-        {{ project.projectTarget | filterTarget }}
+      <p class="text-sm mt-2 text-gray-600 w-full truncate">
+        {{ project.projectTarget }}
       </p>
     </div>
     <div class="flex justify-between flex-wrap items-center mt-4">
@@ -42,13 +42,6 @@ export default {
     formDate: function (value) {
       return new Date(value * 1000).toLocaleDateString("ru-RU");
     },
-    filterTarget: function (value) {
-      if (value.length < (250 - 3)) {
-        return value;
-      }
-
-      return value.substr(0, 180) + '...';
-    }
   }
 }
 </script>

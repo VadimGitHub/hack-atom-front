@@ -10,6 +10,7 @@ import Step3 from '@/views/Step3'
 import Admin from '@/views/Admin'
 import Profile from '@/views/Profile'
 import Project from '@/views/Project'
+import Projects from '@/views/Projects'
 import {Role} from '@/_helpers/role';
 
 import {authenticationService} from '@/_services/authentication.service';
@@ -39,6 +40,12 @@ export const router = new Router({
             path: '/profile',
             name: 'profile',
             component: Profile,
+            meta: {authorize: []}
+        },
+        {
+            path: '/projects',
+            name: 'projects',
+            component: Projects,
             meta: {authorize: []}
         },
         {

@@ -31,6 +31,10 @@
                 Главная
               </router-link>
 
+              <router-link to="/projects" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Проекты
+              </router-link>
+
               <!-- Admins -->
               <router-link v-if="currentUser && (currentUser.role === roles.Admin)"
                            to="/admin"

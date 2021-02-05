@@ -5,6 +5,7 @@ import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import Notifications from 'vue-notification'
 import {router} from './router'
+import infiniteScroll from 'vue-infinite-scroll'
 
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
@@ -24,6 +25,7 @@ if (token) {
 Vue.use(Vuex)
 Vue.use(Notifications)
 Vue.use(VueAxios, Axios)
+Vue.use(infiniteScroll)
 
 Vue.config.productionTip = false
 

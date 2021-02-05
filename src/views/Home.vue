@@ -3,7 +3,16 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Ads/>
       <div class="mt-16"></div>
-      <Projects/>
+
+      <div class="text-center">
+        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          Проекты для светлого будущего
+        </p>
+        <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+          Среди наших проектов каждый может найти соответствующий его интересам
+        </p>
+      </div>
+      <Projects :limit="6" :offset="0"/>
     </div>
   </div>
 </template>
