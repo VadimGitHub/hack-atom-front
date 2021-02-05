@@ -92,16 +92,18 @@
                 v-show="alerts">
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your
                 Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
             </div>
             <div
                 class="origin-top-right absolute right-100 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu"
                 v-show="profile">
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your
-                Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
+
+              <router-link v-if="currentUser" to="/profile" role="menuitem"
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                 Профиль
+              </router-link>
+
               <a href="#" v-if="currentUser" @click.prevent="logout"
                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Выйти</a>
             </div>
