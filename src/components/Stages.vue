@@ -3,91 +3,72 @@
     <div class="flex">
       <div class="w-1/4">
         <div class="relative mb-2">
-          <div
-              :class="[status >= 1 ? 'bg-green-500' : 'bg-white', 'w-10 h-10 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center']">
-          <span class="text-center text-white w-full">
-            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                 height="24">
-              <path class="heroicon-ui"
-                    d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2zm14 8V5H5v6h14zm0 2H5v6h14v-6zM8 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-            </svg>
-          </span>
-          </div>
+          <div class="w-10 h-10 bg-purple-500 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center"></div>
         </div>
-
-        <div class="text-xs text-center md:text-base">Select Server</div>
+        <div class="text-xs text-center md:text-base">
+          <router-link to="/step1" class="text-indigo-600 hover:text-indigo-500">
+            I. Резюме
+          </router-link>
+        </div>
       </div>
 
       <div class="w-1/4">
         <div class="relative mb-2">
-          <div class="absolute flex align-center items-center align-middle content-center"
-               style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+          <div class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
             <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-              <div :class="[status > 1 ? 'w-full' : '', 'w-0 bg-green-300 py-1 rounded']"></div>
+              <div :class="[status >= 1 ? 'w-full' : '', 'w-0 bg-green-300 py-1 rounded']"></div>
             </div>
           </div>
 
-          <div
-              :class="[status >= 2 ? 'bg-green-500' : 'bg-white', 'w-10 h-10 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center']">
-          <span class="text-center text-gray-600 w-full">
-            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                 height="24">
-              <path class="heroicon-ui"
-                    d="M9 4.58V4c0-1.1.9-2 2-2h2a2 2 0 0 1 2 2v.58a8 8 0 0 1 1.92 1.11l.5-.29a2 2 0 0 1 2.74.73l1 1.74a2 2 0 0 1-.73 2.73l-.5.29a8.06 8.06 0 0 1 0 2.22l.5.3a2 2 0 0 1 .73 2.72l-1 1.74a2 2 0 0 1-2.73.73l-.5-.3A8 8 0 0 1 15 19.43V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.58a8 8 0 0 1-1.92-1.11l-.5.29a2 2 0 0 1-2.74-.73l-1-1.74a2 2 0 0 1 .73-2.73l.5-.29a8.06 8.06 0 0 1 0-2.22l-.5-.3a2 2 0 0 1-.73-2.72l1-1.74a2 2 0 0 1 2.73-.73l.5.3A8 8 0 0 1 9 4.57zM7.88 7.64l-.54.51-1.77-1.02-1 1.74 1.76 1.01-.17.73a6.02 6.02 0 0 0 0 2.78l.17.73-1.76 1.01 1 1.74 1.77-1.02.54.51a6 6 0 0 0 2.4 1.4l.72.2V20h2v-2.04l.71-.2a6 6 0 0 0 2.41-1.4l.54-.51 1.77 1.02 1-1.74-1.76-1.01.17-.73a6.02 6.02 0 0 0 0-2.78l-.17-.73 1.76-1.01-1-1.74-1.77 1.02-.54-.51a6 6 0 0 0-2.4-1.4l-.72-.2V4h-2v2.04l-.71.2a6 6 0 0 0-2.41 1.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
-            </svg>
-          </span>
+          <div :class="[status >= 2 ? 'bg-indigo-500' : 'bg-white', 'w-10 h-10 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center']">
+            <span class="text-center text-gray-600 w-full"></span>
           </div>
         </div>
+        <div class="text-xs text-center md:text-base">
+          <router-link v-if="status >= 1" :to="(/step2/) + id" class="text-indigo-600 hover:text-indigo-500">
+            II. Описание продукта и<br>анализ рынка
+          </router-link>
+          <span v-else>II. Описание продукта и<br>анализ рынка</span>
+        </div>
 
-        <div class="text-xs text-center md:text-base">User</div>
       </div>
 
       <div class="w-1/4">
         <div class="relative mb-2">
-          <div class="absolute flex align-center items-center align-middle content-center"
-               style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+          <div class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
             <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-              <div :class="[status > 2 ? 'w-full' : '', 'w-0 bg-green-300 py-1 rounded']"></div>
+              <div :class="[status >= 2 ? 'w-full' : '', 'w-0 bg-green-300 py-1 rounded']"></div>
             </div>
           </div>
 
-          <div
-              :class="[status >= 3 ? 'bg-green-500' : 'bg-white', 'w-10 h-10 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center']">
-          <span class="text-center text-gray-600 w-full">
-            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                 height="24">
-              <path class="heroicon-ui"
-                    d="M9 4.58V4c0-1.1.9-2 2-2h2a2 2 0 0 1 2 2v.58a8 8 0 0 1 1.92 1.11l.5-.29a2 2 0 0 1 2.74.73l1 1.74a2 2 0 0 1-.73 2.73l-.5.29a8.06 8.06 0 0 1 0 2.22l.5.3a2 2 0 0 1 .73 2.72l-1 1.74a2 2 0 0 1-2.73.73l-.5-.3A8 8 0 0 1 15 19.43V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.58a8 8 0 0 1-1.92-1.11l-.5.29a2 2 0 0 1-2.74-.73l-1-1.74a2 2 0 0 1 .73-2.73l.5-.29a8.06 8.06 0 0 1 0-2.22l-.5-.3a2 2 0 0 1-.73-2.72l1-1.74a2 2 0 0 1 2.73-.73l.5.3A8 8 0 0 1 9 4.57zM7.88 7.64l-.54.51-1.77-1.02-1 1.74 1.76 1.01-.17.73a6.02 6.02 0 0 0 0 2.78l.17.73-1.76 1.01 1 1.74 1.77-1.02.54.51a6 6 0 0 0 2.4 1.4l.72.2V20h2v-2.04l.71-.2a6 6 0 0 0 2.41-1.4l.54-.51 1.77 1.02 1-1.74-1.76-1.01.17-.73a6.02 6.02 0 0 0 0-2.78l-.17-.73 1.76-1.01-1-1.74-1.77 1.02-.54-.51a6 6 0 0 0-2.4-1.4l-.72-.2V4h-2v2.04l-.71.2a6 6 0 0 0-2.41 1.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
-            </svg>
-          </span>
+          <div :class="[status >= 3 ? 'bg-blue-500' : 'bg-white', 'w-10 h-10 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center']">
+            <span class="text-center text-gray-600 w-full"></span>
           </div>
         </div>
-
-        <div class="text-xs text-center md:text-base">Setting</div>
+        <div class="text-xs text-center md:text-base">
+          <router-link v-if="status >= 2" :to="(/step3/) + id" class="text-indigo-600 hover:text-indigo-500">
+            III. Маркетинг, производство и управление
+          </router-link>
+          <span v-else>III. Маркетинг, производство и управление</span>
+        </div>
       </div>
 
       <div class="w-1/4">
         <div class="relative mb-2">
-          <div class="absolute flex align-center items-center align-middle content-center"
-               style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+          <div class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
             <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-              <div :class="[status > 3 ? 'w-full' : '', 'w-0 bg-green-300 py-1 rounded']"></div>
+              <div :class="[status >= 3 ? 'w-full' : '', 'w-0 bg-green-300 py-1 rounded']"></div>
             </div>
           </div>
 
-          <div
-              :class="[status >= 4 ? 'bg-green-500' : 'bg-white', 'w-10 h-10 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center']">
-          <span class="text-center text-gray-600 w-full">
-            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                 height="24">
-              <path class="heroicon-ui"
-                    d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-2.3-8.7l1.3 1.29 3.3-3.3a1 1 0 0 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 0 1 1.4-1.42z"/>
-            </svg>
-          </span>
+          <div :class="[status >= 4 ? 'bg-green-500' : 'bg-white', 'w-10 h-10 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center']">
+            <span class="text-center text-gray-600 w-full"></span>
           </div>
         </div>
-
-        <div class="text-xs text-center md:text-base">Finished</div>
+        <div class="text-xs text-center md:text-base">
+          <a v-if="status >= 3" href="" class="text-indigo-600 hover:text-indigo-500">IV. Финансы и риски</a>
+          <span v-else>IV. Финансы и риски</span>
+        </div>
       </div>
     </div>
   </div>
@@ -95,10 +76,6 @@
 
 <script>
 export default {
-  props: ['status']
+  props: ['id', 'status'],
 }
 </script>
-
-<style scoped>
-
-</style>

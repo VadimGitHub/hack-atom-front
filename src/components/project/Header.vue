@@ -10,8 +10,8 @@
             {{ project.projectTarget }}
           </p>
         </div>
-        <Stages :status="project.status" />
-
+        <Stages :status="project.status" :id="project.id" />
+        <p v-if="project.status < 4" class="text-xs text-center opacity-40">Вы можете заполнить {{ project.status + 1 }} этап, для этого нажмите на его название.</p>
         <div class="md:grid md:grid-cols-4 md:gap-6 mt-16">
           <div class="md:col-span-1">
             <Plank :title="'Набранный рейтинг'" :content="'238 очков'"/>
@@ -27,7 +27,6 @@
           </div>
         </div>
         <Rating/>
-
       </div>
     </section>
   </div>
