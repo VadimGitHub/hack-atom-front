@@ -2,7 +2,7 @@
   <div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons@3.0.6/css/line.css">
 
-    <footer class="bg-gray-800  pt-5 sm:mt-5 pt-5">
+    <footer class="bg-gray-700  pt-5 sm:mt-5 pt-5">
       <div class="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-left text-center">
         <!-- Col-1 -->
         <div class="p-2 w-1/2 sm:w-4/12 md:w-4/12">
