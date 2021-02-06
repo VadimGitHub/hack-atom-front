@@ -1,20 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .rating {
-    cursor: pointer;
-    unicode-bidi: bidi-override;
-    direction: rtl;
+  cursor: pointer;
+  unicode-bidi: bidi-override;
+  direction: rtl;
 }
+
 .rating > span {
-    display: inline-block;
-    position: relative;
-    width: 1.1em;
-    font-size: 16px;
-    color:#888;
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  font-size: 16px;
+  color: #888;
 }
+
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
-    content: "\2605";
-    position: absolute;
+  content: "\2605";
+  position: absolute;
+}
+
+.fon {
+  content: "";
+  /*background-image: url("/background2.jpg");*/
+  background-size: cover;
+  /*opacity: 0.8;*/
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }

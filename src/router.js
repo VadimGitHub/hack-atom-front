@@ -15,6 +15,7 @@ import Projects from '@/views/Projects'
 import MyProjects from '@/views/MyProjects'
 import Ads from '@/views/Ads'
 import MyAds from '@/views/MyAds'
+import Education from '@/views/Education'
 import {Role} from '@/_helpers/role';
 
 import axios from 'axios'
@@ -118,6 +119,12 @@ export const router = new Router({
             name: 'step4',
             component: Step4,
             meta: {authorize: []}
+        },
+        {
+            path: '/education',
+            name: 'education',
+            component: Education,
+            // meta: {authorize: []} TODO: Закрыть
         },
         {
             path: '*',
