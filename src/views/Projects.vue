@@ -6,6 +6,9 @@
           <div class="flex items-center justify-between px-6">
             <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Список проектов</h1>
             <div class="flex align-center items-center align-middle">
+              <router-link to="/my-projects" class="text-indigo-600 hover:text-indigo-500 whitespace-nowrap mr-5">
+                мои проекты
+              </router-link>
               <select id="stage" name="stage" autocomplete="stage"
                       v-model="filterStage"
                       class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">

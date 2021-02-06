@@ -28,10 +28,7 @@
             <div class="flex space-x-4">
               <NavRouterLink v-if="currentUser" :title="'Главная'" :to="'/'" :active="this.$route.name === 'home'"/>
               <NavRouterLink v-if="currentUser" :title="'Проекты'" :to="'/projects'" :active="this.$route.name === 'projects'"/>
-              <NavRouterLink v-if="currentUser" :title="'Мои проекты'" :to="'/my-projects'" :active="this.$route.name === 'my-projects'"/>
               <NavRouterLink v-if="currentUser" :title="'Доска объявлений'" :to="'/ads'" :active="this.$route.name === 'ads'"/>
-              <NavRouterLink v-if="currentUser" :title="'Мои объявления'" :to="'/my-ads'" :active="this.$route.name === 'my-ads'"/>
-              <NavRouterLink :title="'Образование'" :to="'/education'" :active="this.$route.name === 'education'"/>
 
               <!-- Admins -->
               <NavRouterLink v-if="currentUser && (currentUser.role === roles.Admin)"

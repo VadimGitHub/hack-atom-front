@@ -11,7 +11,7 @@
       <div class="mt-16"></div>
 
       <BoxHeader :header="'Проекты для светлого будущего'"
-                 :subheader="'Среди наших проектов каждый может найти соответствующий его интересам'"/>
+                 :subheader="'Среди наших проектов каждый может найти соответствующий своим интересам'"/>
       <Projects :limit="6" :offset="0" :enableScroll="false" :url="'/project/cards'"/>
       <ButtonIndigo :title="'Посмотреть все проекты'" :to="'/projects'"/>
     </div>
