@@ -33,7 +33,8 @@
 
 
                           <div class="mt-4">
-                            <Label :label="'Укажите основной функционал вашего продукта:'" :id="'productFunctional'" :required="true"/>
+                            <Label :label="'Укажите основной функционал вашего продукта:'" :id="'productFunctional'"
+                                   :required="true"/>
                             <textarea name="productFunctional"
                                       id="productFunctional"
                                       autocomplete="productFunctional"
@@ -43,7 +44,8 @@
                           </div>
 
                           <div class="mt-4">
-                            <Label :label="'Укажите основные характеристики продукта:'" :id="'productCharacteristics'" :required="false"/>
+                            <Label :label="'Укажите основные характеристики продукта:'" :id="'productCharacteristics'"
+                                   :required="false"/>
                             <textarea name="productCharacteristics"
                                       id="productCharacteristics"
                                       autocomplete="productCharacteristics"
@@ -53,18 +55,23 @@
                           </div>
 
                           <div class="mt-4">
-                            <Label :label="'Периодичность покупки продукта/оформления подписки и другое:'" :id="'usingProductId'" :required="true"/>
+                            <Label :label="'Периодичность покупки продукта/оформления подписки и другое:'"
+                                   :id="'usingProductId'" :required="true"/>
                             <select name="usingProductId"
                                     id="usingProductId"
                                     autocomplete="usingProductId"
                                     v-model="temp.usingProductId"
                                     class="mt-2 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                              <option v-for="(item, i) in usingProducts" :key="i" :value="item.id">{{item.value }}</option>
+                              <option v-for="(item, i) in usingProducts" :key="i" :value="item.id">{{
+                                  item.value
+                                }}
+                              </option>
                             </select>
                           </div>
 
                           <div class="mt-4">
-                            <Label :label="'Преимущества продукта по сравнению с аналогами:'" :id="'productAdvantages'" :required="true"/>
+                            <Label :label="'Преимущества продукта по сравнению с аналогами:'" :id="'productAdvantages'"
+                                   :required="true"/>
                             <textarea name="productAdvantages"
                                       id="productAdvantages"
                                       autocomplete="productAdvantages"
@@ -74,7 +81,9 @@
                           </div>
 
                           <div class="mt-4">
-                            <Label :label="'Особенности продукта (наличие авторских прав, гостов, стандартов, сертификатов, экологичность продукта и др.):'" :id="'additionalInformation'" :required="false"/>
+                            <Label
+                                :label="'Особенности продукта (наличие авторских прав, гостов, стандартов, сертификатов, экологичность продукта и др.):'"
+                                :id="'additionalInformation'" :required="false"/>
                             <textarea name="additionalInformation"
                                       id="additionalInformation"
                                       autocomplete="additionalInformation"
@@ -90,7 +99,7 @@
                       </div>
                     </div>
                   </div>
-                  <div v-if="showBtn"  class="py-3 bg-gray-50 text-right">
+                  <div v-if="showBtn" class="py-3 bg-gray-50 text-right">
                     <button
                         class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Сохранить
@@ -126,7 +135,7 @@ export default {
         productAdvantages: "",
         additionalInformation: "",
       },
-      showBtn:true,
+      showBtn: true,
       usingProducts: [],
     }
   },
@@ -142,7 +151,7 @@ export default {
             group: 'foo',
             type: 'success',
             title: 'Успешно',
-            text: 'Проект сохранен'
+            text: 'Данные сохранены'
           });
           // TODO: редирект в карточку проекта
         });
@@ -155,8 +164,8 @@ export default {
     if (this.temp.projectId) {
       this.axios.get('product/byProject/' + this.temp.projectId).then(res => {
         let project = res.data
-        if (project.productName.trim()!="")
-          this.showBtn=false
+        if (project.productName.trim() != "")
+          this.showBtn = false
         this.temp.productName = project.productName;
         this.temp.productFunctional = project.productFunctional;
         this.temp.productCharacteristics = project.productCharacteristics;

@@ -5,11 +5,11 @@
         <div class="name_rate" v-for="(item,i) in rateMas.slice(0,3)" :key="i">{{ item.criteriaName +" - "+ item.mark }}</div>
       </div>
       <div class="rate">
-        <div class="rating"><span v-for="i in 5" :key="i" :style="6-i<=one?'color:red;':'color:#888'"
+        <div class="rating one"><span v-for="i in 5" :key="i" :style="6-i<=one?'color:red;':'color:#888'"
                                   @click="one=6-i">☆</span></div>
-        <div class="rating"><span v-for="i in 5" :key="i" :style="6-i<=two?'color:red;':'color:#888'"
+        <div class="rating two"><span v-for="i in 5" :key="i" :style="6-i<=two?'color:red;':'color:#888'"
                                   @click="two=6-i">☆</span></div>
-        <div class="rating"><span v-for="i in 5" :key="i" :style="6-i<=three?'color:red;':'color:#888'"
+        <div class="rating three"><span v-for="i in 5" :key="i" :style="6-i<=three?'color:red;':'color:#888'"
                                   @click="three=6-i">☆</span></div>
       </div>
       <div class="rate_text">
@@ -46,6 +46,7 @@ export default {
   },
   watch: {
     one:function (n) {
+
      axios.post('mark/create',{
         projectId:this.id,
         mark: n,
@@ -81,10 +82,6 @@ export default {
       return Number(this.one) + Number(this.two) + Number(this.three);
     }
   },
-  async mounted() {
-
-
-  }
 }
 </script>
 

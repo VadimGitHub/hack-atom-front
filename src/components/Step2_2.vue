@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="px-6 py-8">
         <div class="flex justify-between container mx-auto">
@@ -125,7 +125,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="py-3 bg-gray-50 text-right">
+                  <div v-if="showBtn" class="py-3 bg-gray-50 text-right">
                     <button
                         class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Сохранить
@@ -154,7 +154,7 @@ export default {
     return {
       errorMess: "",
       temp: {
-        productId:1 ,
+        projectId:this.$route.params.id ,
         regionId: "",
         barrierEntry: "",
         outputAnaliz: "",
@@ -164,6 +164,7 @@ export default {
           problemSolved: "",
         }]
       },
+      showBtn:true,
       region: [],
 
 
@@ -184,7 +185,15 @@ export default {
       if (this.temp.regionId && this.temp.barrierEntry && this.temp.outputAnaliz ) {
         console.log(JSON.stringify(this.temp))
         this.errorMess = ""
-        axios.post('http://10.0.0.108:8080/market/create', this.temp);
+        axios.post('/market/create', this.temp).then((res) => {
+          console.log(res)
+          this.$notify({
+            group: 'foo',
+            type: 'success',
+            title: 'Успешно',
+            text: 'Данные сохранены'
+          });
+        })
       } else {
         console.log(JSON.stringify(this.temp))
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
@@ -192,6 +201,20 @@ export default {
     }
   },
   async created() {
+    if (this.temp.projectId) {
+      this.axios.get('market/byProject/' + this.temp.projectId).then(res => {
+        console.log(res.data)
+        let project = res.data
+        if (project)
+          this.showBtn=false
+        this.temp.regionId = project.regionId;
+        this.temp.barrierEntry = project.barrierEntry;
+        this.temp.outputAnaliz = project.outputAnaliz;
+        this.temp.competitors = project.competitors;
+      }).catch(error => {
+        console.log(error)
+      });
+    }
     try {
       this.region = await axios.get('/region/find_all')
           .then(res => {
