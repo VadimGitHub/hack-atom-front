@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white w-full flex items-center p-2 rounded-xl shadow border">
+  <div class="my-4 bg-white w-full flex items-center p-2 rounded-xl shadow border">
     <div class="flex-grow p-3">
       <div class="font-semibold text-gray-700">
         {{ title }}

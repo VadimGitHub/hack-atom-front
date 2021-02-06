@@ -12,21 +12,18 @@
         </div>
         <Stages :status="project.status" :id="project.id" />
         <p v-if="project.status < 4" class="text-xs text-center opacity-40">Вы можете заполнить {{ project.status + 1 }} этап, для этого нажмите на его название.</p>
-        <div class="md:grid md:grid-cols-4 md:gap-6 mt-16">
+        <div class="md:grid md:grid-cols-4 md:gap-6 mt-16 items-center">
           <div class="md:col-span-1">
-            <Plank :title="'Набранный рейтинг'" :content="'238 очков'"/>
+            <Plank :title="'Набранный рейтинг'" :content="outRating"/>
           </div>
-          <div class="md:col-span-1">
-            <Plank :title="'Пользователей'" :content="'14 '"/>
-          </div>
+          <Rating class="col-span-2" :id="id" :rate-mas="rateMas"/>
           <div class="md:col-span-1">
             <Plank :title="'До конца конкурса'" :content="'14 дней'"/>
           </div>
           <div class="md:col-span-1">
-            <Plank/>
           </div>
         </div>
-        <Rating :id="id"/>
+
       </div>
     </section>
   </div>
@@ -36,6 +33,7 @@
 import Plank from "@/components/project/Plank";
 import Stages from "@/components/Stages";
 import Rating from '@/components/Rating';
+import axios from "axios";
 
 export default {
   props: ['project'],
@@ -47,9 +45,26 @@ export default {
   data(){
     return{
       id: this.$route.params.id,
-      raring:""
+      raring:"",
+      rateMas: [],
+      outRating: ""
+
     }
   },
+  methods:{
+    calcRating(data){
+      const Rating =Number(data[0].mark) + Number(data[1].mark) + Number(data[2].mark);
+      return Rating
+    }
+  },
+  async created() {
+    this.rateMas= await axios.get(`/mark/getByProject/${this.id}`)
+        .then(res => {
+          console.log(res.data)
+          this.outRating = this.calcRating(res.data)
+          return res.data
+        })
+  }
 
 
 }
