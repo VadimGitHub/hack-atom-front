@@ -28,11 +28,11 @@
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
-              <NavRouterLink :title="'Главная'" :to="'/'" :active="this.$route.name === 'home'"/>
-              <NavRouterLink :title="'Проекты'" :to="'/projects'" :active="this.$route.name === 'projects'"/>
-              <NavRouterLink :title="'Мои проекты'" :to="'/my-projects'" :active="this.$route.name === 'my-projects'"/>
-              <NavRouterLink :title="'Доска объявлений'" :to="'/ads'" :active="this.$route.name === 'ads'"/>
-              <NavRouterLink :title="'Мои объявления'" :to="'/my-ads'" :active="this.$route.name === 'my-ads'"/>
+              <NavRouterLink v-if="currentUser" :title="'Главная'" :to="'/'" :active="this.$route.name === 'home'"/>
+              <NavRouterLink v-if="currentUser" :title="'Проекты'" :to="'/projects'" :active="this.$route.name === 'projects'"/>
+              <NavRouterLink v-if="currentUser" :title="'Мои проекты'" :to="'/my-projects'" :active="this.$route.name === 'my-projects'"/>
+              <NavRouterLink v-if="currentUser" :title="'Доска объявлений'" :to="'/ads'" :active="this.$route.name === 'ads'"/>
+              <NavRouterLink v-if="currentUser" :title="'Мои объявления'" :to="'/my-ads'" :active="this.$route.name === 'my-ads'"/>
 
               <!-- Admins -->
               <NavRouterLink v-if="currentUser && (currentUser.role === roles.Admin)"
