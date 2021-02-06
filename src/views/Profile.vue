@@ -1,13 +1,15 @@
 <template>
-  <div class="py-12 bg-gray-100 border-blue-500">
+  <div class="py-12 border-blue-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
-          <div class="px-4 sm:px-0">
-            <h3 class="text-lg font-medium leading-6 text-gray-900">Профиль</h3>
-            <p class="mt-1 text-sm text-gray-600">
-              Здесь вы можете изменить основную информацию профиля
-            </p>
+          <div class="shadow sm:rounded-md sm:overflow-hidden bg-gray-100 flex flex-col justify-center">
+            <div class="relative px-4 bg-white mx-8 md:mx-0 sm:p-6 mx-auto">
+              <h3 class="text-lg font-medium leading-6 text-gray-900">Профиль</h3>
+              <p class="mt-1 text-sm text-gray-600">
+                Здесь вы можете изменить основную информацию профиля
+              </p>
+            </div>
           </div>
         </div>
         <div class="mt-5 md:mt-0 md:col-span-2">
