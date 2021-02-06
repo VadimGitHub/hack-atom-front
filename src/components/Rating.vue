@@ -51,24 +51,19 @@ export default {
         mark: n,
         criteriaId: this.rateMas[0].criteriaId
       })
-      console.log({
-        projectId:this.id,
-        mark: n,
-        criteriaId: this.rateMas[0].criteriaId
-      })
     },
     two:function (n) {
       axios.post('mark/create',{
         projectId:this.id,
         mark: n,
-        criteriaId: this.rateMas[0].criteriaId
+        criteriaId: this.rateMas[1].criteriaId
       })
     },
     three:function (n) {
       axios.post('mark/create',{
         projectId:this.id,
         mark: n,
-        criteriaId: this.rateMas[0].criteriaId
+        criteriaId: this.rateMas[2].criteriaId
       })
     },
 
