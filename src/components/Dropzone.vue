@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Dropzone</h1>
     <div id="claimDropzone"
          action="http://10.0.0.108:8080/file/upload"
          class="dropzone"

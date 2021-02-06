@@ -1,10 +1,8 @@
 <template>
   <div class="py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
       <Header :project="project" />
       <Detailed :project="project" />
-
     </div>
   </div>
 </template>
@@ -12,7 +10,6 @@
 <script>
 
 import Header from "@/components/project/Header";
-// import Authors from "@/components/project/Authors";
 import Detailed from "@/components/project/Detailed";
 
 export default {
@@ -23,7 +20,6 @@ export default {
   },
   components: {
     Header,
-    // Authors,
     Detailed,
   },
   mounted() {
@@ -40,7 +36,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

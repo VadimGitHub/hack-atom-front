@@ -14,7 +14,6 @@
           </div>
 
           <Projects :limit="5" :offset="0" :enableScroll="true" :url="'/project/cards'"/>
-
         </div>
       </div>
     </div>

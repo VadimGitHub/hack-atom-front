@@ -7,7 +7,7 @@
             <div class="relative px-4 bg-white mx-8 md:mx-0 sm:p-6 mx-auto">
               <h3 class="text-lg font-medium leading-6 text-gray-900">Профиль</h3>
               <p class="mt-1 text-sm text-gray-600">
-                Здесь вы можете изменить основную информацию профиля
+                Здесь отражена основная информация вашего профиля
               </p>
             </div>
           </div>
@@ -46,11 +46,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-              <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Сохранить
-              </button>
             </div>
           </div>
         </div>

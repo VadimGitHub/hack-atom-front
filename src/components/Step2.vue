@@ -83,8 +83,6 @@
                                       cols="30" rows="4"></textarea>
                           </div>
 
-                          <Dropzone />
-
                           <div class="col-span-6 mt-6" v-if="errorMess">
                             <h1 class="text-sm text-red-600">{{ errorMess }}</h1>
                           </div>
@@ -110,13 +108,11 @@
 </template>
 <script>
 import Label from "@/components/Label";
-import Dropzone from "@/components/Dropzone";
 
 export default {
   name: "step2",
   components: {
-    Label,
-    Dropzone
+    Label
   },
   data() {
     return {

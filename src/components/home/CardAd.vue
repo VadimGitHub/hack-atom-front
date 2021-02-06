@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="bg-white w-full  p-2 rounded-xl shadow border">
-      <div class="text-gray-400 text-xs text-right">
-        <a :href="('mailto:') + email">{{ email }}</a>
-      </div>
-      <div class="flex-grow p-3">
+      <div class="flex-grow p-3 text-center">
         <div class="font-semibold text-gray-700">
           {{ title }}
         </div>
         <div class="text-sm text-gray-500">
           {{ content }}
+        </div>
+        <div class="text-gray-400 text-xs mt-2">
+          <a :href="('mailto:') + email">{{ email }}</a>
         </div>
       </div>
       <div class="text-center">

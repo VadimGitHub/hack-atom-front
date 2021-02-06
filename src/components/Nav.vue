@@ -29,6 +29,7 @@
               <NavRouterLink v-if="currentUser" :title="'Главная'" :to="'/'" :active="this.$route.name === 'home'"/>
               <NavRouterLink v-if="currentUser" :title="'Проекты'" :to="'/projects'" :active="this.$route.name === 'projects'"/>
               <NavRouterLink v-if="currentUser" :title="'Доска объявлений'" :to="'/ads'" :active="this.$route.name === 'ads'"/>
+              <NavRouterLink v-if="currentUser" :title="'Рейтинговая таблицы'" :to="'/rating-table'" :active="this.$route.name === 'rating-table'"/>
 
               <!-- Admins -->
               <NavRouterLink v-if="currentUser && (currentUser.role === roles.Admin)"

@@ -16,6 +16,7 @@ import MyProjects from '@/views/MyProjects'
 import Ads from '@/views/Ads'
 import MyAds from '@/views/MyAds'
 import CreateAd from '@/views/CreateAd'
+import RatingTable from '@/views/RatingTable'
 import {Role} from '@/_helpers/role';
 
 import axios from 'axios'
@@ -95,6 +96,12 @@ export const router = new Router({
             path: '/forms',
             name: 'forms',
             component: Forms
+        },
+        {
+            path: '/rating-table',
+            name: 'rating-table',
+            component: RatingTable,
+            meta: {authorize: []}
         },
         {
             path: '/step1',

@@ -2,7 +2,9 @@
   <div class="max-w-2xl px-10 py-6 bg-white rounded-lg shadow-md">
     <div class="flex justify-between items-center">
       <span class="font-light text-gray-600">{{ project.createDate | formDate }}</span>
-      <StagesMini :status="project.status"/>
+      <div class="w-1/4">
+        <StagesMini :status="project.status"/>
+      </div>
     </div>
     <div class="mt-2">
       <router-link :to="(/project/) + project.id + '/' + project.status" role="menuitem"

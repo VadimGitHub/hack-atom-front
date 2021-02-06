@@ -27,6 +27,8 @@ function login(login, password) {
         currentUserSubject.next(user);
 
         window.location = '/'
+    }).catch(() => {
+        alert('Возникла ошибка авторизации. Повторите попытку позже.')
     });
 }
 
