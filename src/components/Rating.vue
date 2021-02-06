@@ -51,6 +51,14 @@ export default {
         mark: n,
         criteriaId: this.rateMas[0].criteriaId
       })
+         .catch(()=>{
+       this.$notify({
+         group: 'foo',
+         type: 'error',
+         title: 'Ошибка',
+         text: 'Вы оценивали данный проект'
+       });
+      })
     },
     two:function (n) {
       axios.post('mark/create',{

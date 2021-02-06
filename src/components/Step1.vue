@@ -90,7 +90,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="py-3 bg-gray-50 text-right">
+                  <div class="py-3 bg-gray-50 text-right" v-if="!temp.projectId">
                     <button
                         class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Сохранить
