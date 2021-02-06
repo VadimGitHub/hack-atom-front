@@ -12,19 +12,6 @@
                 все проекты
               </router-link>
               <ButtonIndigo class="whitespace-nowrap" :title="'Создать проект'" :to="'/step1'"/>
-              <select id="stage" name="stage" autocomplete="stage"
-                      v-model="filterStage"
-                      class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                <option v-for="(date, i) in stage" :key="i" :value="date">{{ date }}</option>
-              </select>
-
-              <select id="date" name="date" autocomplete="date"
-                      v-model="filterDate"
-                      class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                <option v-for="(date, i) in filtersList" :key="i" :value="date">{{ date }}</option>
-              </select>
-
-              <a href="/my-projects">сбросить</a>
             </div>
           </div>
           <Projects :limit="5" :offset="0" :enableScroll="true" :url="'/project/for_user'"/>
