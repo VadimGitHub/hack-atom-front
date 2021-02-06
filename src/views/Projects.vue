@@ -9,6 +9,7 @@
               <router-link to="/my-projects" class="text-indigo-600 hover:text-indigo-500 whitespace-nowrap mr-5">
                 мои проекты
               </router-link>
+              <ButtonIndigo class="whitespace-nowrap" :title="'Создать проект'" :to="'/step1'"/>
               <select id="stage" name="stage" autocomplete="stage"
                       v-model="filterStage"
                       class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
@@ -35,6 +36,7 @@
 
 <script>
 import Projects from "@/components/home/Projects";
+import ButtonIndigo from "@/components/ButtonIndigo";
 
 export default {
   data() {
@@ -54,7 +56,8 @@ export default {
     }
   },
   components: {
-    Projects
+    Projects,
+    ButtonIndigo
   }
 }
 </script>

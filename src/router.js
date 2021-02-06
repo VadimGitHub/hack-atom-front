@@ -15,6 +15,7 @@ import Projects from '@/views/Projects'
 import MyProjects from '@/views/MyProjects'
 import Ads from '@/views/Ads'
 import MyAds from '@/views/MyAds'
+import CreateAd from '@/views/CreateAd'
 import {Role} from '@/_helpers/role';
 
 import axios from 'axios'
@@ -70,6 +71,12 @@ export const router = new Router({
             path: '/my-ads',
             name: 'my-ads',
             component: MyAds,
+            meta: {authorize: []}
+        },
+        {
+            path: '/create-ad',
+            name: 'create-ad',
+            component: CreateAd,
             meta: {authorize: []}
         },
         {

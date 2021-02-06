@@ -8,10 +8,10 @@
               <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Мои проекты</h1>
             </div>
             <div class="flex align-center items-center align-middle">
-              <ButtonIndigo class="whitespace-nowrap" :title="'Создать проект'" :to="'/step1'"/>
               <router-link to="/projects" class="text-indigo-600 hover:text-indigo-500 whitespace-nowrap mr-5">
                 все проекты
               </router-link>
+              <ButtonIndigo class="whitespace-nowrap" :title="'Создать проект'" :to="'/step1'"/>
               <select id="stage" name="stage" autocomplete="stage"
                       v-model="filterStage"
                       class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
