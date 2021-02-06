@@ -7,6 +7,8 @@
       <ButtonIndigo :title="'Посмотреть все объявления'" :to="'/projects'"/>
 
       <div class="mt-16"></div>
+      <Education/>
+      <div class="mt-16"></div>
 
       <BoxHeader :header="'Проекты для светлого будущего'"
                  :subheader="'Среди наших проектов каждый может найти соответствующий его интересам'"/>
@@ -19,6 +21,7 @@
 <script>
 import Ads from "@/components/home/Ads";
 import Projects from "@/components/home/Projects";
+import Education from "@/components/Education";
 import BoxHeader from "@/components/BoxHeader";
 import ButtonIndigo from "@/components/ButtonIndigo";
 
@@ -26,6 +29,7 @@ export default {
   components: {
     Ads,
     Projects,
+    Education,
     BoxHeader,
     ButtonIndigo
   },

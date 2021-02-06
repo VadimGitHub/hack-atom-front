@@ -5,7 +5,7 @@
                  :subheader="'Образовательные программы для начинающих стартаперов'"/>
 
       <div class="relative items-center justify-center mt-8">
-        <carousel :autoplay="false" :nav="false" class="flex flex-wrap">
+        <carousel :autoplay="false" :nav="false" :margin="75">
           <EducationCard
               :title="'Курс начинающих предпринимателей'"
               :content="'Как выбрать и проверить на жизнеспособность бизнес-идею, как выстроить сервис и продажи, а также наладить работу с клиентами.'"
