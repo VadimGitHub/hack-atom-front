@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100">
+  <div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="px-6 py-8">
         <div class="flex justify-between container mx-auto">

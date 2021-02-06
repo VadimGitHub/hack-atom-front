@@ -28,10 +28,7 @@
             <div class="flex space-x-4">
               <NavRouterLink v-if="currentUser" :title="'Главная'" :to="'/'" :active="this.$route.name === 'home'"/>
               <NavRouterLink v-if="currentUser" :title="'Проекты'" :to="'/projects'" :active="this.$route.name === 'projects'"/>
-              <NavRouterLink v-if="currentUser" :title="'Мои проекты'" :to="'/my-projects'" :active="this.$route.name === 'my-projects'"/>
               <NavRouterLink v-if="currentUser" :title="'Доска объявлений'" :to="'/ads'" :active="this.$route.name === 'ads'"/>
-              <NavRouterLink v-if="currentUser" :title="'Мои объявления'" :to="'/my-ads'" :active="this.$route.name === 'my-ads'"/>
-              <NavRouterLink :title="'Образование'" :to="'/education'" :active="this.$route.name === 'education'"/>
 
               <!-- Admins -->
               <NavRouterLink v-if="currentUser && (currentUser.role === roles.Admin)"
@@ -45,7 +42,7 @@
             </div>
           </div>
         </div>
-        <div v-if="currentUser" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div v-if="currentUser" class="hidden sm:block absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <div class="ml-3 relative">
             <NavRouterLink v-if="currentUser" :title="'Профиль'" :to="'/profile'" :active="this.$route.name === 'profile'"/>
             <a href="#" v-if="currentUser" @click.prevent="logout"

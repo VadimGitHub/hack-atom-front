@@ -7,9 +7,9 @@
             <Span1 v-for="(ad, i) in ads" :key="i">
               <CardAd
                   class="mb-5 sm:mb-0"
-                  :email="'chvss.era@gmail.com'"
-                  :title="'Ищу толкового дизайнера'"
-                  :content="'Ищем любого рукастого ногастого'" />
+                  :email="ad.userEmail"
+                  :title="ad.name"
+                  :content="ad.content" />
             </Span1>
           </div>
         </div>
@@ -19,14 +19,14 @@
 </template>
 
 <script>
-import CardAd from "@/components/home/CardAd";
 import Span1 from "@/components/Span1";
+import CardAd from "@/components/home/CardAd";
 
 export default {
-  props: ['limit', 'offset', 'enableScroll'],
+  props: ['limit', 'offset', 'enableScroll', 'url'],
   data() {
     return {
-      ads: [1, 2, 3, 4, 4, 4],
+      ads: {},
     };
   },
   components: {
@@ -34,21 +34,16 @@ export default {
     CardAd
   },
   mounted() {
-    this.axios.get('/ads/find_all', {
+    this.axios.get(this.url, {
       params: {
         limit: this.limit,
         offset: 0
       }
     }).then(res => {
-      console.log(res)
-      // this.ads = res.data
+      this.ads = res.data
     }).catch(error => {
       console.log(error)
     });
   }
 }
 </script>
-
-<style scoped>
-
-</style>

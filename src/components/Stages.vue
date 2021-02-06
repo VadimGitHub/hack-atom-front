@@ -77,8 +77,5 @@
 <script>
 export default {
   props: ['id', 'status'],
-  mounted() {
-    //console.log(this.productId)
-  }
 }
 </script>

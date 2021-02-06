@@ -6,18 +6,14 @@
           <div class="flex items-center justify-between px-6">
             <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Доска объявлений</h1>
             <div class="flex align-center items-center align-middle">
-              <select id="date" name="date" autocomplete="date"
-                      v-model="filterDate"
-                      class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                <option v-for="(date, i) in filtersList" :key="i" :value="date">{{ date }}</option>
-              </select>
-
-              <a href="/projects">сбросить</a>
+              <router-link to="/my-ads" class="text-indigo-600 hover:text-indigo-500 whitespace-nowrap mr-5">
+                мои объявления
+              </router-link>
+              <ButtonIndigo class="whitespace-nowrap" :title="'Подать объявление'" :to="'/create-ad'"/>
             </div>
           </div>
 
-          <Ads :limit="5" :offset="0" :enableScroll="true"/>
-
+          <Ads :limit="5" :offset="0" :enableScroll="true" :url="'/ads/find_all'"/>
         </div>
       </div>
     </div>
@@ -26,6 +22,7 @@
 
 <script>
 import Ads from "@/components/home/Ads";
+import ButtonIndigo from "@/components/ButtonIndigo";
 
 export default {
   data() {
@@ -38,7 +35,8 @@ export default {
     }
   },
   components: {
-    Ads
+    Ads,
+    ButtonIndigo
   }
 }
 </script>

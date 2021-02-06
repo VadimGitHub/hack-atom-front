@@ -6,19 +6,10 @@
           <div class="flex items-center justify-between px-6">
             <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Список проектов</h1>
             <div class="flex align-center items-center align-middle">
-              <select id="stage" name="stage" autocomplete="stage"
-                      v-model="filterStage"
-                      class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                <option v-for="(date, i) in stage" :key="i" :value="date">{{ date }}</option>
-              </select>
-
-              <select id="date" name="date" autocomplete="date"
-                      v-model="filterDate"
-                      class="mr-4 mt-1 block w-full py-2 px-3 border border-gray-300 border-b-2 border-gray-100 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  h-10">
-                <option v-for="(date, i) in filtersList" :key="i" :value="date">{{ date }}</option>
-              </select>
-
-              <a href="/projects">сбросить</a>
+              <router-link to="/my-projects" class="text-indigo-600 hover:text-indigo-500 whitespace-nowrap mr-5">
+                мои проекты
+              </router-link>
+              <ButtonIndigo class="whitespace-nowrap" :title="'Создать проект'" :to="'/step1'"/>
             </div>
           </div>
 
@@ -32,6 +23,7 @@
 
 <script>
 import Projects from "@/components/home/Projects";
+import ButtonIndigo from "@/components/ButtonIndigo";
 
 export default {
   data() {
@@ -51,7 +43,8 @@ export default {
     }
   },
   components: {
-    Projects
+    Projects,
+    ButtonIndigo
   }
 }
 </script>

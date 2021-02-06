@@ -1,21 +1,22 @@
 <template>
   <div>
     <div class="bg-white w-full  p-2 rounded-xl shadow border">
-      <div class="flex items-center">
-        <div class="flex-grow p-3">
-          <div class="font-semibold text-gray-700">
-            {{ title }}
-          </div>
-          <div class="text-sm text-gray-500">
-            {{ content }}
-          </div>
-        </div>
-        <div class="p-2">
-          <span class="block h-4 w-4 bg-blue-400 rounded-full bottom-0 right-0"></span>
-        </div>
-      </div>
       <div class="text-gray-400 text-xs text-right">
         <a :href="('mailto:') + email">{{ email }}</a>
+      </div>
+      <div class="flex-grow p-3">
+        <div class="font-semibold text-gray-700">
+          {{ title }}
+        </div>
+        <div class="text-sm text-gray-500">
+          {{ content }}
+        </div>
+      </div>
+      <div class="text-center">
+        <button @click="respond"
+                     class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          Откликнуться
+        </button>
       </div>
     </div>
   </div>
@@ -23,7 +24,17 @@
 
 <script>
 export default {
-  props: ['title', 'content', 'email']
+  props: ['title', 'content', 'email'],
+  methods: {
+    respond() {
+      this.$notify({
+        group: 'foo',
+        type: 'success',
+        title: 'Успешно',
+        text: 'Заявка отправлена'
+      });
+    }
+  }
 }
 </script>
 
