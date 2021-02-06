@@ -2,7 +2,7 @@
   <div>
     <h1>Dropzone</h1>
     <div id="claimDropzone"
-         action="http://10.0.0.108:8080/file/upload"
+         action="/file/upload"
          class="dropzone"
          data-url-init="/ajax/upload/files">
       <div class="dz-message" data-dz-message>

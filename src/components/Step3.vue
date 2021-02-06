@@ -135,7 +135,7 @@ export default {
       if (this.temp.marketingProductCost && this.temp.volumeSales && this.temp.advertisingWays ) {
         console.log(JSON.stringify(this.temp))
         this.errorMess = ""
-        axios.post('http://10.0.0.108:8080/marketing/create', this.temp);
+        axios.post('/marketing/create', this.temp);
       } else {
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
       }

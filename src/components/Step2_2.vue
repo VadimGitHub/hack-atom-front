@@ -191,7 +191,7 @@ export default {
             group: 'foo',
             type: 'success',
             title: 'Успешно',
-            text: 'Проект сохранен'
+            text: 'Данные сохранены'
           });
         })
       } else {

@@ -155,7 +155,7 @@ export default {
             group: 'foo',
             type: 'success',
             title: 'Успешно',
-            text: 'Проект сохранен'
+            text: 'Данные сохранены'
           });
           // TODO: редирект в карточку проекта
         });

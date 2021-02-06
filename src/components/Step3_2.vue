@@ -180,7 +180,7 @@ export default {
       if (this.temp.costPrise && this.temp.timeProduction) {
         console.log(JSON.stringify(this.temp))
         this.errorMess = ""
-        axios.post('http://10.0.0.108:8080/productions/create', this.temp);
+        axios.post('productions/create', this.temp);
       } else {
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
       }

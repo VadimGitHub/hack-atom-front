@@ -614,7 +614,7 @@ export default {
       if (this.temp.projectName && this.temp.projectTarget && this.temp.scopeId && this.temp.stageId) {
         console.log(JSON.stringify(this.temp))
         this.errorMess = ""
-        axios.post('http://10.0.0.108:8080/project/create', this.temp);
+        axios.post('/project/create', this.temp);
       } else {
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
       }
