@@ -7,7 +7,7 @@
             <div class="relative px-4 bg-white mx-8 md:mx-0 sm:p-6 mx-auto">
               <h3 class="text-lg font-medium leading-6 text-gray-900">Профиль</h3>
               <p class="mt-1 text-sm text-gray-600">
-                Здесь отражена основная информация вашего профиля
+                Основная информация вашего профиля
               </p>
             </div>
           </div>
@@ -57,7 +57,7 @@
             <div class="relative px-4 bg-white mx-8 md:mx-0 sm:p-6 mx-auto">
               <h3 class="text-lg font-medium leading-6 text-gray-900">Команда</h3>
               <p class="mt-1 text-sm text-gray-600">
-                Список заявок в вашу команду
+                Список откликнувшихся на ваши объявления
               </p>
             </div>
           </div>
@@ -74,20 +74,29 @@
                   </th>
                   <th scope="col"
                       class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Роль
+                    Email
+                  </th>
+                  <th scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Телефон
                   </th>
                 </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                <tr>
+                <tr v-for="(ad, i) in ads" :key="i">
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-900">
-                      1
+                      {{ ad.userName }}
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     <div class="text-sm text-gray-900">
-                      2
+                      {{ ad.email }}
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <div class="text-sm text-gray-900">
+                      {{ ad.userPhone }}
                     </div>
                   </td>
                 </tr>
@@ -114,6 +123,8 @@ export default {
       company: null,
       companyList: [],
       currentUser: authenticationService.currentUserValue,
+
+      ads: []
     };
   },
   methods: {
@@ -143,6 +154,13 @@ export default {
   mounted() {
     this.axios.get('/company/find_all').then((response) => {
       this.companyList = response.data
+    });
+
+    this.axios.get('/response_ads/find_all').then((response) => {
+      function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+      }
+      this.ads = response.data.filter(onlyUnique);
     });
 
     let currentUser = authenticationService.currentUserValue;

@@ -13,8 +13,12 @@
         </div>
       </div>
       <div class="text-center">
-        <button @click="respond" :disabled=isDisabled
+        <button @click="respond" v-if=!isDisabled
                      class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          Откликнуться
+        </button>
+        <button v-else
+                class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-300 hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
           Откликнуться
         </button>
       </div>
@@ -32,12 +36,7 @@ export default {
   },
   methods: {
     respond() {
-      this.axios.post('/response_ads/create/' + this.id, {
-        login: this.login,
-        email: this.email,
-        phone: this.phone,
-        companyId: this.company,
-      }).then(() => {
+      this.axios.post('/response_ads/create/' + this.id).then(() => {
         this.isDisabled = true;
 
         this.$notify({

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-96 m-auto flex">
+  <div class="w-96 m-auto flex px-3">
     <div
         class="grid grid-cols-3 grid-rows-7 grid-flow-row overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
       <div class="col-span-3 row-span-4">
