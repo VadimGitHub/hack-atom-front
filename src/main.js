@@ -17,7 +17,7 @@ import './index.css'
 
 // API_URL=http://10.0.0.108:8080/
 // API_URL=http://78.142.222.206:8080/api/
-Axios.defaults.baseURL = 'http://10.0.0.108:8080/api';
+Axios.defaults.baseURL = 'http://10.0.0.108:8080/api/';
 
 const token = localStorage.getItem('token')
 if (token) {
