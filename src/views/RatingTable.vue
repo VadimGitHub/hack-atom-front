@@ -2,7 +2,6 @@
   <div class="py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- This example requires Tailwind CSS v2.0+ -->
       <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -50,7 +49,7 @@
                     <StagesMini :status="project.status"/>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    Admin
+                    {{ project.rating }}
                   </td>
                 </tr>
                 </tbody>
@@ -78,7 +77,7 @@ export default {
     StagesMini
   },
   created() {
-    this.axios.get('/project/cards', {
+    this.axios.get('/project/projectRating', {
       params: {
         limit: this.limit,
         offset: 0

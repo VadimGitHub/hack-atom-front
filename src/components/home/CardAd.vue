@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="text-center">
-        <button @click="respond"
+        <button @click="respond" :disabled=isDisabled
                      class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
           Откликнуться
         </button>
@@ -24,16 +24,33 @@
 
 <script>
 export default {
-  props: ['title', 'content', 'email'],
+  props: ['title', 'content', 'email', 'id'],
+  data() {
+    return {
+      isDisabled: false
+    }
+  },
   methods: {
     respond() {
-      this.$notify({
-        group: 'foo',
-        type: 'success',
-        title: 'Успешно',
-        text: 'Заявка отправлена'
+      this.axios.post('/response_ads/create/' + this.id, {
+        login: this.login,
+        email: this.email,
+        phone: this.phone,
+        companyId: this.company,
+      }).then(() => {
+        this.isDisabled = true;
+
+        this.$notify({
+          group: 'foo',
+          type: 'success',
+          title: 'Успешно',
+          text: 'Заявка отправлена'
+        });
       });
     }
+  },
+  created() {
+    this.isDisabled = false;
   }
 }
 </script>

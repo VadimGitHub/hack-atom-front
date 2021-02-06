@@ -20,16 +20,25 @@
         </div>
         <div class="flex-1 flex items-center justify-center sm:justify-start">
           <div class="flex-shrink-0 flex items-center">
-            <img class="block lg:hidden h-8 w-auto" src="/logo.png" alt="Workflow">
-            <img class="hidden lg:block h-8 w-auto h-14" src="/logo.png" alt="Workflow">
-            <p class="text-white lg:tracking-widest text-2xl pl-3">АРХ<b>ИДЕЯ</b></p>
+            <router-link :to="'/'" class="block lg:hidden h-8 w-auto">
+              <img class="block lg:hidden h-8 w-auto" src="/logo.png" alt="Workflow">
+            </router-link>
+            <router-link :to="'/'" class="hidden lg:block h-8 w-auto h-14">
+              <img class="hidden lg:block h-8 w-auto h-14" src="/logo.png" alt="Workflow">
+            </router-link>
+            <router-link :to="'/'">
+              <p class="text-white lg:tracking-widest text-2xl pl-3">АРХ<b>ИДЕЯ</b></p>
+            </router-link>
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
               <NavRouterLink v-if="currentUser" :title="'Главная'" :to="'/'" :active="this.$route.name === 'home'"/>
-              <NavRouterLink v-if="currentUser" :title="'Проекты'" :to="'/projects'" :active="this.$route.name === 'projects'"/>
-              <NavRouterLink v-if="currentUser" :title="'Доска объявлений'" :to="'/ads'" :active="this.$route.name === 'ads'"/>
-              <NavRouterLink v-if="currentUser" :title="'Рейтинговая таблицы'" :to="'/rating-table'" :active="this.$route.name === 'rating-table'"/>
+              <NavRouterLink v-if="currentUser" :title="'Проекты'" :to="'/projects'"
+                             :active="this.$route.name === 'projects'"/>
+              <NavRouterLink v-if="currentUser" :title="'Доска объявлений'" :to="'/ads'"
+                             :active="this.$route.name === 'ads'"/>
+              <NavRouterLink v-if="currentUser" :title="'Рейтинговая таблицы'" :to="'/rating-table'"
+                             :active="this.$route.name === 'rating-table'"/>
 
               <!-- Admins -->
               <NavRouterLink v-if="currentUser && (currentUser.role === roles.Admin)"
@@ -38,16 +47,21 @@
                              :active="this.$route.name === 'admin'"/>
               <!-- End Admins -->
 
-              <NavRouterLink v-if="!currentUser" :title="'Авторизация'" :to="'/login'" :active="this.$route.name === 'login'"/>
-              <NavRouterLink v-if="!currentUser" :title="'Регистрация'" :to="'/signup'" :active="this.$route.name === 'signup'"/>
+              <NavRouterLink v-if="!currentUser" :title="'Авторизация'" :to="'/login'"
+                             :active="this.$route.name === 'login'"/>
+              <NavRouterLink v-if="!currentUser" :title="'Регистрация'" :to="'/signup'"
+                             :active="this.$route.name === 'signup'"/>
             </div>
           </div>
         </div>
-        <div v-if="currentUser" class="hidden sm:block absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div v-if="currentUser"
+             class="hidden sm:block absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <div class="ml-3 relative">
-            <NavRouterLink v-if="currentUser" :title="'Профиль'" :to="'/profile'" :active="this.$route.name === 'profile'"/>
+            <NavRouterLink v-if="currentUser" :title="'Профиль'" :to="'/profile'"
+                           :active="this.$route.name === 'profile'"/>
             <a href="#" v-if="currentUser" @click.prevent="logout"
-               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" role="menuitem">Выйти</a>
+               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+               role="menuitem">Выйти</a>
 
             <div
                 class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"

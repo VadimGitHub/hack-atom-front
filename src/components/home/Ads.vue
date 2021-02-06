@@ -7,6 +7,7 @@
             <Span1 v-for="(ad, i) in ads" :key="i">
               <CardAd
                   class="mb-5 sm:mb-0"
+                  :id="ad.id"
                   :email="ad.userEmail"
                   :title="ad.name"
                   :content="ad.content" />

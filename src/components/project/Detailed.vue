@@ -1,10 +1,13 @@
 <template>
   <!-- This example requires Tailwind CSS v2.0+ -->
   <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="px-4 py-5 sm:px-6">
+    <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
       <h3 class="text-lg leading-6 font-medium text-gray-900">
         Основная информация по проекту
       </h3>
+      <a href="" class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        скачать файл отчета
+      </a>
     </div>
     <div class="border-t border-gray-200">
       <dl>
@@ -75,7 +78,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
