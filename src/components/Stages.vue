@@ -6,7 +6,7 @@
           <div class="w-10 h-10 bg-purple-500 border-2 mx-auto border-2 rounded-full text-lg text-white flex items-center"></div>
         </div>
         <div class="text-xs text-center md:text-base">
-          <router-link :to="('/step1/') + id" class="text-indigo-600 hover:text-indigo-500">
+          <router-link :to="`/step1/${id}`" class="text-indigo-600 hover:text-indigo-500">
             I. Резюме
           </router-link>
         </div>
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="text-xs text-center md:text-base">
-          <router-link v-if="status >= 1" :to="(/step2/) + id" class="text-indigo-600 hover:text-indigo-500">
+          <router-link v-if="status >= 1" :to="`/step2/${id}`" class="text-indigo-600 hover:text-indigo-500">
             II. Описание продукта и<br>анализ рынка
           </router-link>
           <span v-else>II. Описание продукта и<br>анализ рынка</span>
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="text-xs text-center md:text-base">
-          <router-link v-if="status >= 2" :to="(/step3/) + id" class="text-indigo-600 hover:text-indigo-500">
+          <router-link v-if="status >= 2" :to="`/step3/${id}`" class="text-indigo-600 hover:text-indigo-500">
             III. Маркетинг, производство и управление
           </router-link>
           <span v-else>III. Маркетинг, производство и управление</span>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box">
+    <div class="box bg-white shadow mx-auto mt-2 p-8 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
       <div class="rates">
         <div class="name_rate" v-for="(item,i) in rateMas.slice(0,3)" :key="i">{{ item.criteriaName +" - "+ item.mark }}</div>
       </div>
@@ -12,17 +12,11 @@
         <div class="rating"><span v-for="i in 5" :key="i" :style="6-i<=three?'color:red;':'color:#888'"
                                   @click="three=6-i">☆</span></div>
       </div>
-      <h1 class="rate_text text-5xl">{{ rate }}</h1>
-
-      <!--  <div class="Chart">
-          <DoughnutExample
-              class="ch"
-              ref="skills_chart"
-              :chart-data="chartData"
-              :options="options">
-          </DoughnutExample>
-        </div>-->
-
+      <div class="rate_text">
+        <div>{{one}}</div>
+        <div>{{two }}</div>
+        <div>{{three}}</div>
+      </div>
 
     </div>
 
@@ -33,35 +27,21 @@
 //import DoughnutExample from '@/components/DoughnutExample'
 import axios from "axios";
 
-const options = {
-  maintainAspectRatio: false,
-  animation: {
-    animateRotate: false
-  }
-}
+
 export default {
   name: "Rating",
   // components: {DoughnutExample},
-  props: ["id"],
+  props: ["id","rateMas"],
   methods:{
 
   },
   data() {
     return {
-      options,
       one: 0,
       two: 0,
       three: 0,
-      rateMas: [],
-      chartData: {
-        labels: [],
-        datasets: [
-          {
-            backgroundColor: ["#ff0000"],
-            data: [0, 15]
-          },
-        ]
-      }
+
+
     }
   },
   watch: {
@@ -71,19 +51,27 @@ export default {
         mark: n,
         criteriaId: this.rateMas[0].criteriaId
       })
+         .catch(()=>{
+       this.$notify({
+         group: 'foo',
+         type: 'error',
+         title: 'Ошибка',
+         text: 'Вы оценивали данный проект'
+       });
+      })
     },
     two:function (n) {
       axios.post('mark/create',{
         projectId:this.id,
         mark: n,
-        criteriaId: this.rateMas[0].criteriaId
+        criteriaId: this.rateMas[1].criteriaId
       })
     },
     three:function (n) {
       axios.post('mark/create',{
         projectId:this.id,
         mark: n,
-        criteriaId: this.rateMas[0].criteriaId
+        criteriaId: this.rateMas[2].criteriaId
       })
     },
 
@@ -94,11 +82,7 @@ export default {
     }
   },
   async mounted() {
-    this.rateMas = await axios.get(`/mark/getByProject/${this.id}`)
-        .then(res => {
-          console.log(res.data)
-          return res.data
-        })
+
 
   }
 }
@@ -106,7 +90,6 @@ export default {
 
 <style scoped>
 .box {
-  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;

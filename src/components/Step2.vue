@@ -88,7 +88,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="py-3 bg-gray-50 text-right">
+                  <div v-if="showBtn"  class="py-3 bg-gray-50 text-right">
                     <button
                         class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Сохранить
@@ -126,6 +126,7 @@ export default {
         productAdvantages: "",
         additionalInformation: "",
       },
+      showBtn:true,
       usingProducts: [],
     }
   },
@@ -135,7 +136,8 @@ export default {
       console.log(JSON.stringify(this.temp))
       if (this.temp.productFunctional && this.temp.productName && this.temp.usingProductId && this.temp.productAdvantages) {
         this.errorMess = ""
-        this.axios.post('/product/create', this.temp).then(() => {
+        this.axios.post('/product/create', this.temp).then((res) => {
+          console.log(res)
           this.$notify({
             group: 'foo',
             type: 'success',
@@ -150,6 +152,22 @@ export default {
     }
   },
   async created() {
+    if (this.temp.projectId) {
+      this.axios.get('product/byProject/' + this.temp.projectId).then(res => {
+        let project = res.data
+        if (project.productName.trim()!="")
+          this.showBtn=false
+        this.temp.productName = project.productName;
+        this.temp.productFunctional = project.productFunctional;
+        this.temp.productCharacteristics = project.productCharacteristics;
+        this.temp.usingProductId = project.usingProductId;
+        this.temp.productAdvantages = project.productAdvantages;
+        this.temp.additionalInformation = project.additionalInformation;
+      }).catch(error => {
+        console.log(error)
+      });
+    }
+
     try {
       this.usingProducts = await this.axios.get('/using_product/find_all')
           .then(res => {
