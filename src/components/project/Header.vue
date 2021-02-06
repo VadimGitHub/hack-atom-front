@@ -26,7 +26,7 @@
             <Plank/>
           </div>
         </div>
-        <Rating/>
+        <Rating :id="id"/>
       </div>
     </section>
   </div>
@@ -36,13 +36,22 @@
 import Plank from "@/components/project/Plank";
 import Stages from "@/components/Stages";
 import Rating from '@/components/Rating';
+
 export default {
   props: ['project'],
   components: {
     Plank,
     Stages,
     Rating
-  }
+  },
+  data(){
+    return{
+      id: this.$route.params.id,
+      raring:""
+    }
+  },
+
+
 }
 </script>
 
