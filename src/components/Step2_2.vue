@@ -5,7 +5,7 @@
         <div class="flex justify-between container mx-auto">
           <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
-              <h3 class="text-lg font-medium leading-6 text-gray-900">Шаг 2.1</h3>
+              <h3 class="text-lg font-medium leading-6 text-gray-900">Шаг 2.2</h3>
               <p class="mt-1 text-sm text-gray-600">
                 Этап заполенение информации о продукте
               </p>
@@ -121,7 +121,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="py-3 bg-gray-50 text-right">
+                  <div v-if="showBtn" class="py-3 bg-gray-50 text-right">
                     <button
                         class="inline-flex justify-center py-2 px-10 mr-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-400 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Сохранить
@@ -150,7 +150,7 @@ export default {
     return {
       errorMess: "",
       temp: {
-        productId:1 ,
+        projectId:this.$route.params.id ,
         regionId: "",
         barrierEntry: "",
         outputAnaliz: "",
@@ -160,6 +160,7 @@ export default {
           problemSolved: "",
         }]
       },
+      showBtn:true,
       region: [],
 
 
@@ -180,7 +181,15 @@ export default {
       if (this.temp.regionId && this.temp.barrierEntry && this.temp.outputAnaliz ) {
         console.log(JSON.stringify(this.temp))
         this.errorMess = ""
-        axios.post('http://10.0.0.108:8080/market/create', this.temp);
+        axios.post('http://10.0.0.108:8080/market/create', this.temp).then((res) => {
+          console.log(res)
+          this.$notify({
+            group: 'foo',
+            type: 'success',
+            title: 'Успешно',
+            text: 'Проект сохранен'
+          });
+        })
       } else {
         console.log(JSON.stringify(this.temp))
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
@@ -188,6 +197,20 @@ export default {
     }
   },
   async created() {
+    if (this.temp.projectId) {
+      this.axios.get('market/byProject/' + this.temp.projectId).then(res => {
+        console.log(res.data)
+        let project = res.data
+        if (project)
+          this.showBtn=false
+        this.temp.regionId = project.regionId;
+        this.temp.barrierEntry = project.barrierEntry;
+        this.temp.outputAnaliz = project.outputAnaliz;
+        this.temp.competitors = project.competitors;
+      }).catch(error => {
+        console.log(error)
+      });
+    }
     try {
       this.region = await axios.get('/region/find_all')
           .then(res => {
