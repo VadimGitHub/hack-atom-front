@@ -67,7 +67,7 @@
             </div>
             <div class="ml-3 text-sm">
               <label for="person" class="text-gray-700">
-                Ознакомился с <a href="#" class="text-indigo-600 hover:text-indigo-500">согласием на обработку
+                Ознакомился с <a href="/Soglashenie_152FZ.pdf" target="_blank" class="text-indigo-600 hover:text-indigo-500">согласием на обработку
                 персональных данных</a> и принимаю его условия
               </label>
             </div>
@@ -80,7 +80,7 @@
             </div>
             <div class="ml-3 text-sm">
               <label for="nondisclosure" class="text-gray-700">
-                Я ознакомился с <a href="#" class="text-indigo-600 hover:text-indigo-500">согласием о не разглашении
+                Я ознакомился с <a href="/Soglashenie_bd.pdf" target="_blank" class="text-indigo-600 hover:text-indigo-500">согласием о не разглашении
                 содержания БД</a>, лицам не зарегистрированным в БД
               </label>
             </div>
