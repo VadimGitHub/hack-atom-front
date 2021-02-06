@@ -16,11 +16,11 @@
                 <option v-for="(date, i) in filtersList" :key="i" :value="date">{{ date }}</option>
               </select>
 
-              <a href="/my-projects">сбросить</a>
+              <a href="/my-ads">сбросить</a>
             </div>
           </div>
 
-          <Ads :limit="5" :offset="0" :enableScroll="true" :url="'/ads/find_all'"/>
+          <Ads :limit="5" :offset="0" :enableScroll="true" :url="'/ads/find_user'"/>
         </div>
       </div>
     </div>

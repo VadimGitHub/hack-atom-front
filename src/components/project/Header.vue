@@ -50,8 +50,6 @@ export default {
       raring:""
     }
   },
-
-
 }
 </script>
 

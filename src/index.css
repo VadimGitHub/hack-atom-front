@@ -24,7 +24,7 @@
 
 .fon {
   content: "";
-  /*background-image: url("/background2.jpg");*/
+  background-image: url("/background.jpg");
   background-size: cover;
   /*opacity: 0.8;*/
   top: 0;

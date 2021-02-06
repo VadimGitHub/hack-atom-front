@@ -42,7 +42,7 @@
             </div>
           </div>
         </div>
-        <div v-if="currentUser" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div v-if="currentUser" class="hidden sm:block absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <div class="ml-3 relative">
             <NavRouterLink v-if="currentUser" :title="'Профиль'" :to="'/profile'" :active="this.$route.name === 'profile'"/>
             <a href="#" v-if="currentUser" @click.prevent="logout"

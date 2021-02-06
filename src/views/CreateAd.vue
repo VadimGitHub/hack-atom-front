@@ -24,6 +24,7 @@
                                    id="name"
                                    autocomplete="name"
                                    v-model="name"
+                                   :maxlength="maxName"
                                    class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                           </div>
 
@@ -34,6 +35,7 @@
                                    id="content"
                                    autocomplete="content"
                                    v-model="content"
+                                   :maxlength="maxContent"
                                    class="mt-2 px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
                           </div>
 
@@ -69,6 +71,8 @@ export default {
   },
   data() {
     return {
+      maxName: 30,
+      maxContent: 40,
       errorMess: "",
       name: null,
       content: null,
@@ -88,9 +92,11 @@ export default {
             group: 'foo',
             type: 'success',
             title: 'Успешно',
-            text: 'Проект сохранен'
+            text: 'Объявление сохранено'
           });
-          window.location = '/ads';
+          setTimeout(function () {
+            window.location = '/my-ads';
+          }, 500)
         });
       } else {
         this.errorMess = "Необходимо заполнить обязательные поля помеченные звездочкой"
