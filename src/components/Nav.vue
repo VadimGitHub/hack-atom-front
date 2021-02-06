@@ -20,10 +20,8 @@
         </div>
         <div class="flex-1 flex items-center justify-center sm:justify-start">
           <div class="flex-shrink-0 flex items-center">
-            <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                 alt="Workflow">
-            <img class="hidden lg:block h-8 w-auto h-14"
-                 src="/logo.png" alt="Workflow">
+            <img class="block lg:hidden h-8 w-auto" src="/logo.png" alt="Workflow">
+            <img class="hidden lg:block h-8 w-auto h-14" src="/logo.png" alt="Workflow">
             <p class="text-white lg:tracking-widest text-2xl pl-3">АРХ<b>ИДЕЯ</b></p>
           </div>
           <div class="hidden sm:block sm:ml-6">

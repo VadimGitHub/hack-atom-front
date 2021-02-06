@@ -124,7 +124,7 @@ export const router = new Router({
             path: '/education',
             name: 'education',
             component: Education,
-            // meta: {authorize: []} TODO: Закрыть
+            meta: {authorize: []}
         },
         {
             path: '*',
